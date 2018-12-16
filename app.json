@@ -24,7 +24,7 @@
         "selectedIconPath": "images/index_focus.png"
       },
       {
-        "pagePath": "pages/mycenter/mycenter",
+        "pagePath": "pages/personal/personal",
         "text": "个人中心",
         "iconPath": "images/my.png",
         "selectedIconPath": "images/my_focus.png"
