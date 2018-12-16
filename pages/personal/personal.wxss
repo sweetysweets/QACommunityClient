@@ -1,0 +1,81 @@
+@import "../../page/u-template/u-template.wxss";
+@import "../../page/p-template/p-template.wxss";
+
+.user {
+    width: 750rpx;
+    background: #ffffff;
+    padding: 30rpx 25rpx 30rpx 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #dcdcdc;
+    box-shadow: 0 2px 5px #eeeeee;
+}
+
+.userinfo-avatar {
+    flex: 1;
+    display: inline-block;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 80rpx;
+}
+
+.user-info {
+    flex: 5;
+    text-align: left;
+}
+
+.user-info text {
+    display: block;
+}
+
+.userinfo-nickname {
+    padding: 8rpx 0 10rpx 0;
+    font-size: 30rpx;
+    color: #818A8F;
+}
+
+.edit {
+    font-size: 30rpx;
+    color: #bababa;
+    line-height: 34rpx;
+}
+
+.concern {
+    margin: 15rpx 0 0 0;
+    border-top: solid 1px #ebebeb;
+    border-bottom: solid 2px #ebebeb;
+}
+
+.user-concern {
+    font-size: 28rpx;
+    padding: 80rpx 0;
+}
+
+.swiper-tab {
+    width: 100%;
+    border-bottom: 2rpx solid #777777;
+    text-align: center;
+    line-height: 80rpx;
+}
+
+.swiper-tab-list {
+    font-size: 30rpx;
+    display: inline-block;
+    width: 33.33%;
+    color: #777777;
+}
+
+.on {
+    color: #7000a1;
+    border-bottom: 5rpx solid #7000a1;
+}
+
+.swiper-box {
+    display: block;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.swiper-box view {
+    text-align: center;
+}
