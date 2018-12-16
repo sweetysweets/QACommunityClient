@@ -101,6 +101,3 @@ Page({
 
 })
 
-module.exports = {
-  formatTime: formatTime
-}

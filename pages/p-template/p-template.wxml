@@ -1,0 +1,11 @@
+<template name="problem">
+    <view class="problem-item flex-wrp">
+      <view class="avatar flex-item">
+        <image src="{{avatar_img}}"></image>
+      </view>
+      <view class="problem-content flex-item">
+        <text class= "guding">于  {{date}}  提出了问题</text>
+        <text class="p-title" bindTap="onDetails">{{title}}</text>
+      </view>
+    </view>
+</template>
