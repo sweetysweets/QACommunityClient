@@ -1,6 +1,11 @@
 {
   "pages": [
+    "pages/answers/answers",
     "pages/index/index",
+    
+    "pages/login/login",
+    "pages/questions/questions",
+    "pages/writeAnswer/writeAnswer",
     "pages/askquestion/askquestion",
     "pages/logs/logs",
     "pages/comment/comment",
