@@ -1,12 +1,12 @@
 <!--pages/askQuestion/askquestion.wxml-->
 <view style='margin:10rpx 10rpx 10rpx 10rpx;border-bottom:solid 1px #ebebeb;'>
-<input placeholder="请输入问题"/>
+<input placeholder="请输入问题"bindinput='titleInput'/>
 </view>
 <view style='padding:10rpx 10rpx 10rpx 10rpx;box-shadow: 0 1px 2px #bebebe;'>
-<textarea placeholder='请输入问题描述'>
+<textarea placeholder='请输入问题描述'bindinput='contentInput'>
 </textarea>
 </view>
-<view>
-<button type='primary' size='primary'>提交问题</button>
+<view style='padding:20rpx 20rpx 20rpx 20rpx'>
+<button type='primary' size='primary' bindtap='gotoList'>提交问题</button>
 </view>
 

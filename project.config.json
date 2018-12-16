@@ -11,7 +11,7 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.1",
+	"libVersion": "2.4.2",
 	"appid": "wx015f2e27ccd72b47",
 	"projectname": "QACommuntiyClient",
 	"debugOptions": {
