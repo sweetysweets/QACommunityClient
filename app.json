@@ -3,14 +3,9 @@
     "pages/comment/comment",
     "pages/index/index",
     "pages/askquestion/askquestion",
-<<<<<<< HEAD
-    "pages/logs/logs"
-    
-=======
-    "pages/logs/logs",
-    "pages/comment/comment",
+
     "pages/personal/personal"
->>>>>>> 2146eaa5685f3ca16c83f06b2f550ff8192feae4
+
   ],
   "window": {
     "backgroundTextStyle": "light",
