@@ -7,5 +7,6 @@
 </textarea>
 </view>
 <view>
+<button type='primary' size='primary'>提交问题</button>
 </view>
 

@@ -3,8 +3,14 @@
     "pages/comment/comment",
     "pages/index/index",
     "pages/askquestion/askquestion",
+<<<<<<< HEAD
     "pages/logs/logs"
     
+=======
+    "pages/logs/logs",
+    "pages/comment/comment",
+    "pages/personal/personal"
+>>>>>>> 2146eaa5685f3ca16c83f06b2f550ff8192feae4
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -27,8 +33,9 @@
       {
         "pagePath": "pages/personal/personal",
         "text": "个人中心",
-        "iconPath": "images/discovery.png",
-        "selectedIconPath": "images/discovery_focus.png"
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my_focus.png"
       }
     ]
+  }
 }
