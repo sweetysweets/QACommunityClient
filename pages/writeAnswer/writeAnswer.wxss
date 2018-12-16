@@ -1,0 +1,19 @@
+/* pages/writeAnswer/writeAnswer.wxss */
+.btn1{
+  /* right:5rpx; */
+  width: 22%;
+  height: 80rpx;
+  margin: 20rpx;
+  color:white;
+  font-size: 35rpx;
+  /* padding: 0 0 500rpx; */
+  background-color:#0068C4;
+  position: relative;
+  left:550rpx;
+}
+
+.answer{
+  margin:15rpx,10rpx,20rpx,10rpx;
+  /* background-color: yellow; */
+  padding:15rpx,10rpx,20rpx,10rpx;
+}

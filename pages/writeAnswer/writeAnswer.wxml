@@ -1,0 +1,7 @@
+<!--pages/writeAnswer/writeAnswer.wxml-->
+<view class="answer">
+<textarea  placeholder='我的想法是...' auto-focus />
+</view >
+<view>
+<button class='.btn1'>提交</button>
+</view>
