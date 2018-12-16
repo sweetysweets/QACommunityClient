@@ -1,5 +1,5 @@
-<import src="../../page/u-template/u-template.wxml"></import>
-<import src="../../page/p-template/p-template.wxml"></import>
+<import src="../../pages/u-template/u-template.wxml"></import>
+<import src="../../pages/p-template/p-template.wxml"></import>
 <view class="container">
   <view class="user flex-wrp">
     <view class="avatar flex-item">

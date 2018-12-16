@@ -1,5 +1,5 @@
-@import "../../page/u-template/u-template.wxss";
-@import "../../page/p-template/p-template.wxss";
+@import "../../pages/u-template/u-template.wxss";
+@import "../../pages/p-template/p-template.wxss";
 
 .user {
     width: 750rpx;
