@@ -23,7 +23,7 @@
     text-align: center;
   }
 
-.user {
+  .user {
     width: 750rpx;
     background: #ffffff;
     padding: 30rpx 25rpx 30rpx 0;
