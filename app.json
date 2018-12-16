@@ -1,9 +1,10 @@
 {
   "pages": [
+    "pages/comment/comment",
     "pages/index/index",
     "pages/askquestion/askquestion",
-    "pages/logs/logs",
-    "pages/comment/comment"
+    "pages/logs/logs"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",
