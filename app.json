@@ -26,8 +26,8 @@
       {
         "pagePath": "pages/mycenter/mycenter",
         "text": "个人中心",
-        "iconPath": "images/discovery.png",
-        "selectedIconPath": "images/discovery_focus.png"
+        "iconPath": "images/my.png",
+        "selectedIconPath": "images/my_focus.png"
       }
     ]
 }
