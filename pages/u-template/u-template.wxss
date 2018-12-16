@@ -1,0 +1,59 @@
+.avatar {
+    border-top: solid 1px #ebebeb;
+    border-bottom: solid 2px #ebebeb;
+}
+
+.avatar-item {
+    width: 750rpx;
+    height: 100rpx;
+    background: #ffffff;
+}
+
+.avatar-icon {
+    display: flex;
+    justify-content: left;
+    flex:1;
+}
+
+.avatar-icon image {
+    width: 80rpx;
+    height: 80rpx;
+    padding: 10rpx 20rpx;
+}
+
+.avatar-name {
+    flex: 5;
+}
+
+.avatar-name text {
+    display: block;
+    text-align: left;
+
+}
+
+.avatarinfo-name {
+    padding: 8rpx 0 10rpx 0;
+    font-size: 30rpx;
+    color: #818A8F;
+    margin-top: 10rpx;
+}
+
+.discription {
+    font-size: 20rpx;
+    color: #bababa;
+    width:200rpx;
+}
+
+.is-concern {
+    border: 2px solid whitesmoke;
+    border-radius: 3px;
+    background-color: rgb(250, 249, 249);
+    margin: 20rpx 10rpx 25rpx 0;
+}
+
+.is-concern .avatar-concern {
+    display: block;
+    font-size: 30rpx;
+    color: #666;
+
+}
