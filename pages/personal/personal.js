@@ -12,17 +12,11 @@ Page({
     winHeight: 0,
     // tab切换  
     currentTab: 0,
-    userInfo: {},
+    // userInfo: {},
+    user_key:[],
   },
   onLoad: function (option) {
     var that = this;
-    /** 
-     * 获取系统信息 
-     */
-    that.setData({
-      user_key: allData.userList,
-      problem_key: allData.proList,
-    })
     wx.getSystemInfo({
       success: function (res) {
         that.setData({
@@ -33,11 +27,39 @@ Page({
     });
     console.log('onLoad')
     //调用应用实例的方法获取全局数据
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      })
+    // app.getUserInfo(function (userInfo) {
+    //   //更新数据
+    //   that.setData({
+    //     userInfo: userInfo
+    //   })
+    // })
+  },
+  /** 
+   * 获取关注用户
+   */
+  onShow:function(event){
+    var that = this;
+    wx.request({
+      url: 'http://localhost:8080/user/focus_users',
+      method:'GET',
+      data:{userid:7},
+      success:function(res){
+        var user_key = res.data.userList;
+        console.log(user_key);
+        if(user_key == null){
+          var  toastText =  '获取用户信息失败' + res.data.errMsg;
+          wx.showToast({
+            title: toastText,
+            icon:'',
+            duration:2000
+          })
+        }
+        else{
+          that.setData({
+            user_key:user_key
+          });
+        }
+      }
     })
   },
   /** 
