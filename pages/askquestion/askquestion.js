@@ -27,14 +27,14 @@ Page({
         duration:3000
       })
     }else{
-      var mytime =util.formatTime(new Date);
+      //var mytime =util.formatTime(new Date);
 
       // var uid = app.globalData.userInfo.uid;
       console.log("title:" + this.data.mytitle);
       console.log("content:"+this.data.mycontent);
-      console.log("time:"+mytime)
+      //console.log("time:"+mytime)
       wx.request({
-        url: app.globalData.urlPath + 'submitquestion?userid=1&title=' + this.data.mytitle + '&content=' + this.data.mycontent+'&time='+mytime+'&state=0',
+        url: app.globalData.urlPath+'submitquestion?userid=3&title=' + this.data.mytitle + '&content=' + this.data.mycontent+'&state=0',
         method:'POST',
         success:function(res){
           console.log("res"+res.data);

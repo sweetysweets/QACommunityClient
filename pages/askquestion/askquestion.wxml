@@ -6,6 +6,7 @@
 <textarea placeholder='请输入问题描述'bindinput='contentInput'>
 </textarea>
 </view>
+
 <view style='padding:20rpx 20rpx 20rpx 20rpx'>
 <button type='primary' size='primary' bindtap='gotoList'>提交问题</button>
 </view>
