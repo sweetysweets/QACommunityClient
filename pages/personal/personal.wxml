@@ -1,5 +1,3 @@
-<import src="../../page/u-template/u-template.wxml"></import>
-<import src="../../page/p-template/p-template.wxml"></import>
 <view class="container">
   <view class="user flex-wrp">
     <view class="avatar flex-item">
@@ -26,11 +24,11 @@
           <view class="avatar">
             <view class="avatar-item flex-wrp">
               <view class="avatar-icon flex-item">
-                <image src="{{item.avater}}">rimayo</image>
+                <image src="{{item.avater}}"></image>
               </view>
               <view class="avatar-name flex-item">
-                <text class="avatarinfo-name">huoqubdao</text>
-                <text class="discription">gerenmiaoshu</text>
+                <text class="avatarinfo-name">{{item.name}}</text>
+                <text class="discription">{{item.description}}</text>
               </view>
               <view class="is-concern" bindtap="onConcern">
                 <text class="avatar-concern">{{item.token}}</text>
@@ -44,8 +42,14 @@
     <swiper-item>
       <scroll-view scroll-y="true" class="container notify withtab" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
         <block wx:for="{{problem_key}}" wx:for-item="item">
-          <view bindtap="onDetails" data-ID="{{item.user_id}}">
-            <template is="problem" data="{{...item}}" />
+          <view class="problem-item flex-wrp">
+            <view class="avatar flex-item">
+              <image src="{{item.avater}}"></image>
+            </view>
+            <view class="problem-content flex-item">
+              <text class="guding">于  {{item.createTime}}  提出了问题</text>
+              <text class="p-title" bindTap="onDetails">{{item.content}}</text>
+            </view>
           </view>
         </block>
       </scroll-view>

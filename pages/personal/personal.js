@@ -13,7 +13,7 @@ Page({
     // tab切换  
     currentTab: 0,
     // userInfo: {},
-    user_key:[],
+    user_key: [],
   },
   onLoad: function (option) {
     var that = this;
@@ -37,30 +37,57 @@ Page({
   /** 
    * 获取关注用户
    */
-  onShow:function(event){
+  onShow: function (event) {
     var that = this;
-    wx.request({
-      url: 'http://localhost:8080/user/focus_users',
-      method:'GET',
-      data:{userid:7},
-      success:function(res){
-        var user_key = res.data.userList;
-        console.log(user_key);
-        if(user_key == null){
-          var  toastText =  '获取用户信息失败' + res.data.errMsg;
-          wx.showToast({
-            title: toastText,
-            icon:'',
-            duration:2000
-          })
+    if (that.currentTab == 0) {
+      wx.request({
+        url: 'http://localhost:8080/user/focus_users',
+        method: 'GET',
+        data: {
+          userid: 7
+        },
+        success: function (res) {
+          var user_key = res.data.userList;
+          console.log(user_key);
+          if (user_key == null) {
+            var toastText = '获取用户信息失败' + res.data.errMsg;
+            wx.showToast({
+              title: toastText,
+              icon: '',
+              duration: 2000
+            })
+          } else {
+            that.setData({
+              user_key: user_key
+            });
+          }
         }
-        else{
-          that.setData({
-            user_key:user_key
-          });
+      })
+    } else {
+      wx.request({
+        url: 'http://localhost:8080/user/focus_problems',
+        method: 'GET',
+        data: {
+          userid: 3
+        },
+        success: function (res) {
+          var problem_key = res.data.problemList;
+          console.log(problem_key);
+          if (problem_key == null) {
+            var toastText = '获取用户信息失败' + res.data.errMsg;
+            wx.showToast({
+              title: toastText,
+              icon: '',
+              duration: 2000
+            })
+          } else {
+            that.setData({
+              problem_key: problem_key
+            });
+          }
         }
-      }
-    })
+      })
+    }
   },
   /** 
    * 滑动切换tab 
@@ -101,7 +128,7 @@ Page({
    * */
   onUser: function (event) {
     wx.navigateTo({
-      url: "/page/user/user"
+      url: "/pages/user/user"
     });
   },
 })
