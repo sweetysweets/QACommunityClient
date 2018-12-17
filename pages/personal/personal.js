@@ -1,7 +1,7 @@
 //获取应用实例  
 var app = getApp()
 
-var allData = require('../../data/data.js')
+// var allData = require('../../data/data.js')
 
 Page({
   data: {

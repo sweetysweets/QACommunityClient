@@ -26,8 +26,10 @@ Page({
     this.refresh();
 
     wx.request({
-      url:'http://localhost:8080/QACommunity2/servlet/ServletDemo1',
-      data:{},
+      url: app.globalData.urlPath+'/getmyfocus',
+      //传递参数 userid到后台查询
+      // data:{userid:app.globalData.userInfo.userid},
+      data:{userid:7},
       header: {
         //'Content-Type': 'application/json'
       },
@@ -36,7 +38,8 @@ Page({
         console.log("success")
         console.log(res.data)
         that.setData({
-          question:res.data
+          feed:res.data,
+          feed_length:res.data.length
         })
         // resolve(res)
       },
@@ -102,7 +105,7 @@ Page({
       });
   },
 
-  //使用本地 fake 数据实现刷新效果
+  //刷新一次性获取数据
   refresh: function () {
     var feed = util.getDiscovery();
     console.log("loaddata");

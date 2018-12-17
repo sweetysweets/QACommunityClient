@@ -35,6 +35,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    urlPath: "http://localhost:8080/"
+    urlPath: "http://localhost:8080"
   }
 })

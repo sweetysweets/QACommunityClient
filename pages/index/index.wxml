@@ -25,20 +25,20 @@
           <view class="feed-source">
             <a>
               <view class="avatar">
-                <image src="{{item.feed_source_img}}"></image>
+                <image src="{{item.user.avater}}"></image>
               </view>
-              <text>{{item.feed_source_name}}</text>
+              <text>{{item.user.name}}</text>
             </a>
           </view>
           <view class='feed-content'>
             <view class='question' qid='question_id' bindtap='bindQueTab'>
               <a class='question-link'>
-                <text>{{item.question}}</text>
+                <text>{{item.title}}</text>
               </a>
             </view>
             <view class='answer-body'>
               <view bindtap='bindItemTap'>
-                <text class="answer-body answer-text" aid="{{answer_id}}">{{item.answer_ctnt}}</text>
+                <text class="answer-body answer-text" aid="{{answer_id}}" space="emsp">问题详情 {{item.content}}</text>
               </view>
               <view class='answer-actions' bindtap='bindItemTap'>
                 <view class='like dot'>
@@ -68,9 +68,9 @@
           <view class="feed-source">
             <a class="">
               <view class="avatar">
-                <image src="{{item.feed_source_img}}"></image>
+                <image src="{{item.user.avater}}"></image>
               </view>
-              <text>{{item.feed_source_name}}{{item.feed_source_txt}}</text>
+              <text>{{item.feed_source_txt}}</text>
             </a>
             <image class="item-more" mode="aspectFit" src="../../images/more.png"></image>
           </view>
