@@ -2,6 +2,8 @@
   "pages": [
     "pages/comment/comment",
     "pages/index/index",
+    
+    
     "pages/askquestion/askquestion",
 
     "pages/personal/personal"
