@@ -39,7 +39,6 @@ Page({
    */
   onShow: function (event) {
     var that = this;
-    if (that.currentTab == 0) {
       wx.request({
         url: 'http://localhost:8080/user/focus_users',
         method: 'GET',
@@ -62,8 +61,7 @@ Page({
             });
           }
         }
-      })
-    } else {
+      })    
       wx.request({
         url: 'http://localhost:8080/user/focus_problems',
         method: 'GET',
@@ -87,7 +85,6 @@ Page({
           }
         }
       })
-    }
   },
   /** 
    * 滑动切换tab 
@@ -127,8 +124,9 @@ Page({
    *  点击进入用户主页
    * */
   onUser: function (event) {
+    var uid = event.currentTarget.dataset.uid;
     wx.navigateTo({
-      url: "/pages/user/user"
+      url: "/pages/user/user?uid=" + uid
     });
   },
 })
