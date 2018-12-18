@@ -120,7 +120,7 @@ Page({
    * */
   onDetails: function (event) {
     wx.navigateTo({
-      url: "/page/quedetail/quedetail"
+      url: "/pages/questions/questions"
     });
   },
   /**

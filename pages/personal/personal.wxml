@@ -46,9 +46,9 @@
             <view class="avatar flex-item">
               <image src="{{item.avater}}"></image>
             </view>
-            <view class="problem-content flex-item">
+            <view class="problem-content flex-item" bindTap="onDetails">
               <text class="guding">于  {{item.createTime}}  提出了问题</text>
-              <text class="p-title" bindTap="onDetails">{{item.content}}</text>
+              <text class="p-title">{{item.title}}</text>
             </view>
           </view>
         </block>
