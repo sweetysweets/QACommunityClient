@@ -1,12 +1,13 @@
 /**index.wxss**/
+@import "guanzhu-item/guanzhu-item.wxss";
 
 .container {
   display: flex;
   flex-direction: column;
-  height: 1129rpx;
+  height: 1500rpx;
   padding: 0;
   font-size: 14rpx;
-  /* background: #f0f4f3; */
+  background: #f0f4f3;
   color: #000;
 }
 
@@ -45,6 +46,7 @@
   font-size: 26rpx;
   align-items: center;
   vertical-align: center;
+  align-content: center;
   padding: 12rpx 12rpx 12rpx 12rpx;
 }
 
@@ -53,6 +55,12 @@
   line-height: 20rpx;
 }
 
+/* .head_question-image{
+  flex: 1;
+  width: 35rpx;
+  height: 35rpx;
+  padding: 15rpx 15rpx 15rpx 20rpx;
+} */
 .head-question-text {
   /* vertical-align: center; */
   font-size: 36rpx;
@@ -137,11 +145,10 @@
   padding: 30rpx 30rpx 20rpx;
   margin: 7rpx 0 6rpx 0;
   background: #ffffff;
-   /* border-top: 1px solid #eee;  */
-   border-bottom: 1px solid #eee;
- /* box-shadow: 0 2px 5px #eeeeee;  */
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 2px 5px #eeeeee;
 }
-
 
 .container .feed-item .feed-source{
   width: 690rpx;
@@ -197,11 +204,20 @@
   padding: 10rpx 0 0 0;
   /*height: 10rpx;*/
   font-size: 24rpx;
-  line-height: 28rpx;
+  line-height: 35rpx;
   color: #5b5b5b;
+  
+  display: -webkit-box;
+    word-break: break-all;  
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp:3;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+  
 }
 .container .feed-item .feed-content .answer-text{
   font-size: 24rpx;
+  line-height: 40rpx;
 }
 
 .container .feed-item .feed-content .answer-actions{
@@ -220,49 +236,3 @@
 } */
 
 /*feed-item part is in app.wxss for multiplexing*/
-.reply{
-  float:right
-}
-
-
-.input_null{
-color: #C9C9C9;
-}
- 
-.release{
-display: flex;
-align-items: flex-end; /*底部对齐*/
-justify-content: space-between; /*两端对齐*/
-box-sizing: border-box;
-position: fixed;
-left: 0;
-bottom: 0;
-width: 100%;
-padding: 18rpx 0 18rpx 30rpx;
-background-color: #F7F8F7;
-font-size: 28rpx;
-z-index: 999;
-}
-.release .text{
-width: 604rpx;
-min-height: 34rpx;
-max-height: 102rpx; /*最多显示三行*/
-border-width: 15rpx 20rpx; /*使用padding与预期留白不一致，故使用border*/
-border-style: solid;
-border-color: #ffffff;
-line-height: 34rpx;
-font-size: 28rpx;
-background-color: #ffffff;
-border-radius: 4rpx;
-}
-.release .submit{
-width: 116rpx;
-height: 64rpx;
-line-height: 64rpx;
-text-align: center;
-color: #2a8ce5;
-}
-
-
-
-

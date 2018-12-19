@@ -61,9 +61,11 @@ Page({
     }
   },
   onLoad: function (options) {
+   
     this.setData({
       answer_id: options.answer_id
     })
+    
     var that = this;
     that.getCommentList(that);
     
@@ -153,7 +155,8 @@ Page({
       },
       success: function (res) {
         
-        that.onLoad()
+        that.getCommentList(that);
+
 
         that.setData({
           releaseFocus:false,
@@ -193,7 +196,34 @@ Page({
       }
     });
 
-  }
+  },
+
+  sendComment: function (e) {
+    var that = this
+
+    wx.request({
+      url: getApp().globalData.urlPath + 'comment/addComment',
+      data: {
+        user_id: getApp().globalData.userInfo.id,
+        answer_id: this.data.answer_id,
+        reply_id: -1,
+        content: this.data.reply_content
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+
+        that.getCommentList(that);
+
+
+        that.setData({
+          releaseFocus: false,
+          reply_content: null,
+        })
+      }
+    });
+  },
 
 
 
