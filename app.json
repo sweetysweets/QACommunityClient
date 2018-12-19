@@ -1,19 +1,9 @@
 {
-  "pages": [
-<<<<<<< HEAD
-    "pages/askquestion/askquestion",
-    "pages/index/index",
-    "pages/logs/logs",
-    "pages/comment/comment",
-    "pages/personal/personal"
-=======
-    
+  "pages": [ 
     "pages/index/index",
     "pages/askquestion/askquestion",
     "pages/comment/comment",
     "pages/personal/personal"
-
->>>>>>> origin/master
   ],
   "window": {
     "backgroundTextStyle": "light",
