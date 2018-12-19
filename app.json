@@ -1,16 +1,18 @@
 {
   "pages": [
-
-
-
     "pages/login/login",
-    "pages/comment/comment",
     "pages/index/index",
+
+ "pages/answers/answers",
+
+   
+    "pages/comment/comment",
+    
     "pages/askquestion/askquestion",
     "pages/personal/personal",
     "pages/logs/logs",
     "pages/questions/questions",
-    "pages/answers/answers",
+   
     "pages/writeAnswer/writeAnswer"
 
   ],

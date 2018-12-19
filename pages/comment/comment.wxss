@@ -137,9 +137,9 @@
   padding: 30rpx 30rpx 20rpx;
   margin: 7rpx 0 6rpx 0;
   background: #ffffff;
-  border-top: 1px solid #eee;
-  border-bottom: 1px solid #eee;
-  box-shadow: 0 2px 5px #eeeeee;
+   /* border-top: 1px solid #eee;  */
+   border-bottom: 1px solid #eee;
+ /* box-shadow: 0 2px 5px #eeeeee;  */
 }
 
 

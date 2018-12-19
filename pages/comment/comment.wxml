@@ -37,7 +37,7 @@
       <view class="data-expand p10 border-bottom" wx:if="{{item.flag}}">
         <block wx:for="{{replylist}}" wx:for-index="idx_reply" wx:for-item="reply">
           <!-- 千万注意css样式的层级关系，踩过坑。。。 -->
-          <view class="feed-item">
+          <view class="feed-item" style="margin-left: 60rpx;border-bottom: 0px solid #eee;">
             <view class="feed-source">
               <a>
                 <view class="avatar">
@@ -59,7 +59,7 @@
                     <a> {{reply.time}} </a>
                   </view>
 
-                  <view class='reply dot'>
+                  <view class='reply dot' style="margin-right: 60rpx;">
                     <a  data-idx="{{ idx }}"  data-parent='{{item.comment_id}}' data-id='{{reply.user_id}}' data-name='{{reply.user.name}}' bindtap='bindReply'>回复</a>
                   </view>
                 </view>
@@ -78,4 +78,12 @@
   <textarea name='textarea' class="text" placeholder-class="input_null" bindblur="textareablur" bindinput="textareaInput" fixed="true" maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" focus="{{releaseFocus}}" placeholder="回复 {{reply_name}}"
     value='@ {{reply_name}}: '></textarea>
   <view class="submit" bindtap='sendMessage'>发送</view>
+</view>
+
+
+<view class="talk" bindtap="bindComment"></view>
+<view class="release">
+  <textarea name='textarea' class="text" placeholder-class="input_null" bindblur="textareablur" bindinput="textareaInput" fixed="true" maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" focus="{{releaseFocus}}" placeholder="评论点什么吧 {{}}"
+    value='{{reply_content}}'></textarea>
+  <view class="submit" bindtap='sendComment'>评论</view>
 </view>

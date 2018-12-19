@@ -8,7 +8,7 @@ Page({
     question_id:1,
     title:'',
 
-    answer_id:12,
+    answer_id:0,
     answer_content:'',
     follow: true,
     good: true,
@@ -42,6 +42,7 @@ Page({
         })
       }
     })
+    this.getCommentCount();
   },
 
   /**
@@ -142,8 +143,9 @@ Page({
     
   },
   getCommentCount:function(){
+    var that = this
     wx.request({
-      url: getApp().globalData.urlPath + 'comment/getCommentCount',
+      url: "http://localhost:8080/comment/getCommentCount",
       data: {
         answer_id: this.data.answer_id
       },
