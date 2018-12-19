@@ -33,8 +33,10 @@
         </view>
         <view class="que-operate flex-wrp">
             <view class="invite flex-item">
-                <image src="../../images/invite.png"></image>
-                <text>关注问题</text>
+                <image bindtap='change_followq' wx:if="{{followq}}" src="../../images/关注.png"></image>
+                <image bindtap='change_followq' wx:else src="../../images/蓝-关注.png"></image>
+                <text bindtap='change_followq' wx:if="{{followq}}">关注问题</text>
+                <text class='blue' bindtap='change_followq' wx:else >已关注问题</text>
             </view>
             <view class="write flex-item">
                 <image src="../../images/write.png"></image>
@@ -44,7 +46,7 @@
     </view>
 
     <view class="answer-feed">
-      <block wx:for="{{qaa_list}}">
+      <block wx:for="{{answer_list}}">
         <view  bindtap="bindItemTap" class="feed-item">
             <view class="feed-source">
                 <a class="" bindTap="">
@@ -58,11 +60,11 @@
             <view class="feed-content">
                 <view class="answer-body">
                     <view>
-                        <text class="answer-txt">{{item.answer_content}}</text>
+                        <text class="answer-txt">{{item.content}}</text>
                     </view>
                     <view class="answer-actions">
                         <view class="like dot">
-                            <a>{{item.like_number}}K 赞同 </a>
+                            <a>{{item.support}}K 赞同 </a>
                         </view>
                         <view class="comments dot">
                             <a>{{item.comment_number}} 评论 </a>

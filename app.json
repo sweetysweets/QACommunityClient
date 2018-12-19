@@ -1,13 +1,13 @@
 {
   "pages": [
-    
     "pages/index/index",
     "pages/comment/comment",
-
     "pages/askquestion/askquestion",
     "pages/logs/logs",
-    "pages/personal/personal"
-    
+    "pages/personal/personal",
+    "pages/questions/questions",
+    "pages/writeAnswer/writeAnswer",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",

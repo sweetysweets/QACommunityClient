@@ -28,6 +28,11 @@ Page({
       url: '../logs/logs'
     })
   },
+  bindAskQuestion:function(){
+    wx.navigateTo({
+      url: '../askquestion/askquestion',
+    })
+  },
   onLoad: function () {
     console.log('onLoad')
     var that = this;
