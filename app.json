@@ -1,13 +1,13 @@
 {
   "pages": [
-    "pages/answers/answers",
+    "pages/askquestion/askquestion",
     "pages/questions/questions",
     "pages/writeAnswer/writeAnswer",
-    "pages/index/index",
     "pages/login/login",
-    "pages/askquestion/askquestion",
+    "pages/logs/logs",
     "pages/comment/comment",
-    "pages/personal/personal"
+    "pages/personal/personal",
+    "pages/index/index"
 
   ],
   "window": {
