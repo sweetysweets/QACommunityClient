@@ -60,10 +60,13 @@ Page({
       wx.hideKeyboard()
     }
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    this.setData({
+      answer_id: options.answer_id
+    })
     var that = this;
     that.getCommentList(that);
-
+    
   },
  
   getCommentList: function (that) {

@@ -14,7 +14,8 @@ Page({
     good: true,
     bad: true,
     like: true,
-    collect: true
+    collect: true,
+    comment_length:0
   },
 
   /**
@@ -133,5 +134,28 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  toComment:function(){
+    wx.navigateTo({
+      url: '../comment/comment?answer_id='+this.data.answer_id,
+    })
+    
+  },
+  getCommentCount:function(){
+    wx.request({
+      url: getApp().globalData.urlPath + 'comment/getCommentCount',
+      data: {
+        answer_id: this.data.answer_id
+      },
+      method: 'GET',
+      success: function (res) {
+        var count = res.data;
+        console.log(res.data)
+
+        that.setData({
+          comment_length:count
+        })
+      }
+    })
   }
 })
