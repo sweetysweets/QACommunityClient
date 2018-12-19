@@ -1,14 +1,10 @@
 {
   "pages": [
-<<<<<<< HEAD
         "pages/questions/questions",
     "pages/answers/answers",
     "pages/askquestion/askquestion",
  
     "pages/writeAnswer/writeAnswer",
-=======
-    
->>>>>>> c2006aa7f30b5d879d76eb6b34ffa8527a719438
     "pages/login/login",
     "pages/index/index",
     "pages/index2/index2",
