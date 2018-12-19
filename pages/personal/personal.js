@@ -38,7 +38,7 @@ Page({
         url: 'http://localhost:8080/user/focus_users',
         method: 'GET',
         data: {
-          userid: 7
+          userid: that.data.myInfo.id
         },
         success: function (res) {
           var user_key = res.data.userList;
@@ -61,7 +61,7 @@ Page({
         url: 'http://localhost:8080/user/focus_problems',
         method: 'GET',
         data: {
-          userid: 3
+          userid: that.data.myInfo.id
         },
         success: function (res) {
           var problem_key = res.data.problemList;

@@ -42,7 +42,7 @@
     <swiper-item>
       <scroll-view scroll-y="true" class="container notify withtab" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" >
         <block wx:for="{{problem_key}}" wx:for-item="item">
-        <navigator url="../questions/questions?question_id={{item.qid}}&user_id={{item.uid}}">
+        <navigator url="../questions/questions?question_id={{item.qid}}&question_title={{item.title}}&question_content={{item.content}}&user_id={{item.uid}}">
           <view class="problem-item flex-wrp">
             <view class="avatar flex-item">
               <image src="{{item.avater}}"></image>
