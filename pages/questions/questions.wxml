@@ -38,7 +38,7 @@
                 <text bindtap='change_followq' wx:if="{{followq}}">关注问题</text>
                 <text class='blue' bindtap='change_followq' wx:else >已关注问题</text>
             </view>
-            <view class="write flex-item">
+            <view class="write flex-item" bindtap='toWriteAnswer'>
                 <image src="../../images/write.png"></image>
                 <text>我来回答</text>
             </view>
@@ -48,6 +48,7 @@
     <view class="answer-feed">
       <block wx:for="{{answer_list}}">
         <view  bindtap="bindItemTap" class="feed-item">
+        <navigator url="/pages/answers/answers?id={{item.answer_id}}">
             <view class="feed-source">
                 <a class="" bindTap="">
                     <view class="avatar">
@@ -76,6 +77,7 @@
                     </view>
                 </view>
             </view>
+            </navigator>
         </view>
       </block>
 

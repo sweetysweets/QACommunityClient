@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    question_id:1,
+    question_id:5,
     title:'',
 
 
@@ -27,10 +27,15 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-    this.setData({
-      //question_id:options.question_id
-    })
+  
+    console.log(options)
+    console.log('Answers界面中的answer_id：'+options.answer_id)
 
+    that.setData({
+      //question_id:options.question_id
+      answer_id:options.id
+    })
+   
     wx.request({
       url: 'http://localhost:8080/answer/queryAnswer',
       data:{
