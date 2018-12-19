@@ -39,12 +39,16 @@ Page({
     }else{
       //var mytime =util.formatTime(new Date);
 
-      // var uid = app.globalData.userInfo.uid;
+       var uid = app.globalData.userInfo.uid;
       console.log("title:" + this.data.mytitle);
       console.log("content:"+this.data.mycontent);
       //console.log("time:"+mytime)
       wx.request({
-        url: app.globalData.urlPath+'submitquestion?userid='+this.data.user_id+'&title=' + this.data.mytitle + '&content=' + this.data.mycontent+'&state='+this.data.mystate,
+
+        
+
+        url: app.globalData.urlPath+'submitquestion?userid='+uid+'&title=' + this.data.mytitle + '&content=' + this.data.mycontent+'&state='+this.data.mystate,
+
         method:'POST',
         success:function(res){
           console.log("res"+res.data);
