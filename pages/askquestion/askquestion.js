@@ -39,7 +39,7 @@ Page({
     }else{
       //var mytime =util.formatTime(new Date);
 
-       var uid = app.globalData.userInfo.uid;
+       var uid = app.globalData.userInfo.uId;
       console.log("title:" + this.data.mytitle);
       console.log("content:"+this.data.mycontent);
       //console.log("time:"+mytime)
