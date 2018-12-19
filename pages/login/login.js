@@ -15,7 +15,7 @@ Page({
               that.queryUsreInfo();
               //用户已经授权过
               wx.redirectTo({
-                url: '../comment/comment'
+                url: '../index/index'
               })
             }
           });
@@ -48,7 +48,7 @@ Page({
       });
       //授权成功后，跳转进入小程序首页
       wx.redirectTo({
-         url: '../comment/comment'
+         url: '../index/index'
       })
     } else {
       //用户按了拒绝按钮
