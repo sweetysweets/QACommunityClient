@@ -1,9 +1,29 @@
 {
+<<<<<<< HEAD
   "pages": [ 
+=======
+  "pages": [
+     
+    "pages/login/login",
+>>>>>>> origin/master
     "pages/index/index",
+    "pages/index2/index2",
+    "pages/questions/questions",
+
     "pages/askquestion/askquestion",
+    "pages/personal/personal",
+    "pages/logs/logs",
+    "pages/answers/answers",
+    "pages/user/user",
+
     "pages/comment/comment",
+<<<<<<< HEAD
     "pages/personal/personal"
+=======
+
+    "pages/writeAnswer/writeAnswer"
+
+>>>>>>> origin/master
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -18,7 +38,7 @@
     "borderStyle": "white",
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/index2/index2",
         "text": "首页",
         "iconPath": "images/index.png",
         "selectedIconPath": "images/index_focus.png"

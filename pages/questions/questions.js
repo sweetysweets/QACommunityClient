@@ -1,36 +1,64 @@
 //answer.js
 // var util = require('../../utils/util.js')
-var qaadatas = require('../../data/question_data.js')
+//var qaadatas = require('../../data/question_data.js')
 
-var app = getApp()
 Page({
   data: {
-    motto: '知乎--微信小程序版',
-    userInfo: {}
+    question_id:15,
+    answer_list:[],
+    followq:true
   },
   //事件处理函数
   bindItemTap: function () {
-    wx.navigateTo({
-      url: '../answers/answers'
+    // wx.navigateTo({
+    //   url: '../answers/answers'
+
+    // })
+  },
+  toWriteAnswer:function(){
+        wx.navigateTo({
+      url: '../writeAnswer/writeAnswer'
+
     })
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    console.log('question界面：question_id:'+options.question_id)
+    console.log('question界面：question_title:' + options.question_title)
+    console.log('question界面：question_content:' + options.question_content)
+    console.log('question界面：user_id:' + options.user_id)
     console.log('onLoad')
-    // this.data.qaa_list=qaadatas.qaa_list
-    this.setData({
-      qaa_list: qaadatas.qaa_list,
-      qc:qaadatas.qc,
-      qt:qaadatas.qt,
-    });
     var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function (userInfo) {
-      //更新数据
-      that.setData({
-        userInfo: userInfo
-      })
+    wx.request({
+      url: 'http://localhost:8080/answer/getAnswers',
+      method:'GET',
+      data:{
+      },
+      success:function(res){
+        var answer_list = res.data
+        console.log(answer_list)
+        that.setData({
+          answer_list:answer_list
+        })
+      }
+
     })
+    //调用应用实例的方法获取全局数据
+    
   },
+  change_followq: function () {
+    var followq = this.data.followq;
+    this.setData({
+      followq: !followq
+    })
+    if(followq ==false){
+      //关注了
+    }
+    else{
+      //取关
+    }
+
+  },
+
   tapName: function (event) {
     console.log(event)
   }

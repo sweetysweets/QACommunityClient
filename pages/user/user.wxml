@@ -1,12 +1,14 @@
 <view class="container">
   <view class="user flex-wrp">
+  <block wx:for="{{user_info}}" wx:for-item="item">
     <view class="avatar flex-item">
-      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <image class="userinfo-avatar" src="{{item.avater}}" background-size="cover"></image>
     </view>
     <view class="user-info flex-item">
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-      <text class="edit">个人介绍</text>
+      <text class="userinfo-nickname">{{item.name}}</text>
+      <text class="edit">{{item.description}}</text>
     </view>
+    </block>
   </view>
   <view class="swiper-tab">
     <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">
@@ -20,7 +22,7 @@
     <!-- 用户列表 -->
     <swiper-item>
       <block wx:for="{{user_key}}" wx:for-item="item">
-        <view bindtap="onUser" data-uId="{{item.id}}">
+        <view bindtap="onUser" data-ID="{{item.id}}">
           <view class="avatar">
             <view class="avatar-item flex-wrp">
               <view class="avatar-icon flex-item">
@@ -42,11 +44,11 @@
     <swiper-item>
       <scroll-view scroll-y="true" class="container notify withtab" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
         <block wx:for="{{problem_key}}" wx:for-item="item">
-          <view class="problem-item flex-wrp" bindTap="onDetails">
+          <view class="problem-item flex-wrp">
             <view class="avatar flex-item">
               <image src="{{item.avater}}"></image>
             </view>
-            <view class="problem-content flex-item">
+            <view class="problem-content flex-item" bindTap="onDetails">
               <text class="guding">于  {{item.createTime}}  提出了问题</text>
               <text class="p-title">{{item.title}}</text>
               <text class="p-content">{{item.content}}</text>
