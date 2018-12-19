@@ -8,15 +8,11 @@ Page({
     question_id:5,
     title:'',
 
-<<<<<<< HEAD
-    answer_id:1,
-=======
 
     answer_id:2,
 
     // answer_id:0,
 
->>>>>>> c2006aa7f30b5d879d76eb6b34ffa8527a719438
     answer_content:'',
     follow: true,
     good: true,
