@@ -8,13 +8,22 @@ Page({
     question_id:5,
     title:'',
 
+<<<<<<< HEAD
     answer_id:1,
+=======
+
+    answer_id:2,
+
+    // answer_id:0,
+
+>>>>>>> c2006aa7f30b5d879d76eb6b34ffa8527a719438
     answer_content:'',
     follow: true,
     good: true,
     bad: true,
     like: true,
-    collect: true
+    collect: true,
+    comment_length:0
   },
 
   /**
@@ -46,6 +55,7 @@ Page({
         })
       }
     })
+    this.getCommentCount();
   },
 
   /**
@@ -138,5 +148,29 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  toComment:function(){
+    wx.navigateTo({
+      url: '../comment/comment?answer_id='+this.data.answer_id,
+    })
+    
+  },
+  getCommentCount:function(){
+    var that = this
+    wx.request({
+      url: "http://localhost:8080/comment/getCommentCount",
+      data: {
+        answer_id: this.data.answer_id
+      },
+      method: 'GET',
+      success: function (res) {
+        var count = res.data;
+        console.log(res.data)
+
+        that.setData({
+          comment_length:count
+        })
+      }
+    })
   }
 })

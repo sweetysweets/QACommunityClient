@@ -1,40 +1,89 @@
-<!--index.wxml-->
-<!--本来想用模板的，但是调试有错误，不能显示数据-->
-
 <scroll-view scroll-y="true" class="container" bindscrolltoupper="upper" bindscrolltolower="lower" scroll-top="{{scrollTop}}">
-    <view class="ctnt0">
-      <block wx:for="{{commentlist}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
-        <!-- 千万注意css样式的层级关系，踩过坑。。。 -->
-        <view class="feed-item">
-          <view class="feed-source">
-            <a>
-              <view class="avatar">
-                <image src="{{item.feed_source_img}}"></image>
-              </view>
-              <text>{{item.feed_source_name}}</text>
-            </a>
+  <view class="ctnt0">
+    <block wx:for="{{commentlist}}" wx:for-index="idx" wx:for-item="item">
+      <!-- 千万注意css样式的层级关系，踩过坑。。。 -->
+      <view class="feed-item">
+        <view class="feed-source">
+          <a>
+            <view class="avatar">
+              <image src="{{item.user.avater}}"></image>
+            </view>
+            <text>{{item.user.name}}</text>
+          </a>
+        </view>
+        <view class='feed-content'>
+          <view class='question' qid='question_id' bindtap='bindQueTab'>
+
           </view>
-          <view class='feed-content'>
-            <view class='question' qid='question_id' bindtap='bindQueTab'>
-              <a class='question-link'>
-                <text>{{item.question}}</text>
-              </a>
+          <view class='answer-body'>
+            <view bindtap='bindItemTap'>
+              <text class="answer-body answer-text" aid="{{answer_id}}">{{item.content}}</text>
             </view>
-            <view class='answer-body'>
-              <view bindtap='bindItemTap'>
-                <text class="answer-body answer-text" aid="{{answer_id}}">{{item.answer_ctnt}}</text>
+            <view class='answer-actions' bindtap='bindItemTap'>
+              <view class='like dot'>
+                <a> {{item.time}} </a>
               </view>
-              <view class='answer-actions' bindtap='bindItemTap'>
-                <view class='like dot'>
-                  <a>{{item.good_num}} 赞同 </a>
-                </view>
-                <view class='comments dot'>
-                  <a>{{item.comment_num}} 评论</a>
-                </view>
+              <view>
+                <a data-parent='{{item.comment_id}}' data-idx="{{ idx }}" bindtap='showReply'>查看全部</a>
+              </view>
+              <view class='reply dot'>
+                <a  data-idx="{{ idx }}" data-id='{{item.comment_id}}' data-name='{{item.user.name}}' bindtap='bindReply'>回复</a>
               </view>
             </view>
+
           </view>
         </view>
-      </block>
-    </view>
+      </view>
+      <view class="data-expand p10 border-bottom" wx:if="{{item.flag}}">
+        <block wx:for="{{replylist}}" wx:for-index="idx_reply" wx:for-item="reply">
+          <!-- 千万注意css样式的层级关系，踩过坑。。。 -->
+          <view class="feed-item" style="margin-left: 60rpx;border-bottom: 0px solid #eee;">
+            <view class="feed-source">
+              <a>
+                <view class="avatar">
+                  <image src="{{reply.user.avater}}"></image>
+                </view>
+                <text>{{reply.user.name}}</text>
+              </a>
+            </view>
+            <view class='feed-content'>
+              <view class='question' qid='question_id' bindtap='bindQueTab'>
+
+              </view>
+              <view class='answer-body'>
+                <view bindtap='bindItemTap'>
+                  <text class="answer-body answer-text">{{reply.content}}</text>
+                </view>
+                <view class='answer-actions' bindtap='bindItemTap'>
+                  <view class='like dot'>
+                    <a> {{reply.time}} </a>
+                  </view>
+
+                  <view class='reply dot' style="margin-right: 60rpx;">
+                    <a  data-idx="{{ idx }}"  data-parent='{{item.comment_id}}' data-id='{{reply.user_id}}' data-name='{{reply.user.name}}' bindtap='bindReply'>回复</a>
+                  </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
 </scroll-view>
+
+
+<view class="talk" bindtap="bindReply"></view>
+<view class="release" hidden="{{!releaseFocus}}">
+  <textarea name='textarea' class="text" placeholder-class="input_null" bindblur="textareablur" bindinput="textareaInput" fixed="true" maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" focus="{{releaseFocus}}" placeholder="回复 {{reply_name}}"
+    value='@ {{reply_name}}: '></textarea>
+  <view class="submit" bindtap='sendMessage'>发送</view>
+</view>
+
+
+<view class="talk" bindtap="bindComment"></view>
+<view class="release">
+  <textarea name='textarea' class="text" placeholder-class="input_null" bindblur="textareablur" bindinput="textareaInput" fixed="true" maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" focus="{{releaseFocus}}" placeholder="评论点什么吧 {{}}"
+    value='{{reply_content}}'></textarea>
+  <view class="submit" bindtap='sendComment'>评论</view>
+</view>

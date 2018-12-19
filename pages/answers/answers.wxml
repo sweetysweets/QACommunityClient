@@ -99,9 +99,9 @@
                     <image bindtap='collect_change' wx:else src="../../images/星星.png"></image>
                     <text>收藏</text>
                 </view>
-                <view class="operation-btn flex-item">
+                <view class="operation-btn flex-item" bindtap='toComment'>
                     <image src="../../images/comment.png"></image>
-                    <text>302</text>
+                    <text>{{comment_length}}</text>
                 </view>
 
             </view>

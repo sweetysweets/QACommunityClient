@@ -21,7 +21,11 @@ Page({
 
     })
   },
-  onLoad: function (e) {
+  onLoad: function (options) {
+    console.log('question界面：question_id:'+options.question_id)
+    console.log('question界面：question_title:' + options.question_title)
+    console.log('question界面：question_content:' + options.question_content)
+    console.log('question界面：user_id:' + options.user_id)
     console.log('onLoad')
     var that = this
     wx.request({
