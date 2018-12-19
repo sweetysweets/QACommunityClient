@@ -1,7 +1,9 @@
 {
   "pages": [
+        "pages/questions/questions",
+    "pages/answers/answers",
     "pages/askquestion/askquestion",
-    "pages/questions/questions",
+ 
     "pages/writeAnswer/writeAnswer",
     "pages/login/login",
     "pages/logs/logs",

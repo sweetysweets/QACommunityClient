@@ -10,8 +10,15 @@ Page({
   },
   //事件处理函数
   bindItemTap: function () {
-    wx.navigateTo({
-      url: '../answers/answers'
+    // wx.navigateTo({
+    //   url: '../answers/answers'
+
+    // })
+  },
+  toWriteAnswer:function(){
+        wx.navigateTo({
+      url: '../writeAnswer/writeAnswer'
+
     })
   },
   onLoad: function (e) {
@@ -39,6 +46,13 @@ Page({
     this.setData({
       followq: !followq
     })
+    if(followq ==false){
+      //关注了
+    }
+    else{
+      //取关
+    }
+
   },
 
   tapName: function (event) {
