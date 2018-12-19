@@ -14,6 +14,8 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   align-content: center;
+  line-height: 30rpx;
+  /* word-spacing: 20rpx; */
 }
 .question-wrp{
     border-radius: 3px;
@@ -42,17 +44,22 @@
     padding: 5rpx 0rpx 20rpx 5rpx;
     font-weight: bold;
     font-size: 38rpx;
+    word-spacing: 10rpx;
+    line-height: 50rpx;
+    /* 改动的 */
 }
 .question-item .que-content{
     padding: 0 5rpx 5rpx 10rpx;
     font-size: 26rpx;
-    
-    display: -webkit-box;
+    word-spacing: 10rpx;
+    /* display: -webkit-box;
     word-break: break-all;  
     -webkit-box-orient: vertical;
     -webkit-line-clamp:3;
     overflow: hidden;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;  */
+     line-height: 40rpx;   
+     /* 改动的 */
 }
 .question-item .que-follow{
     margin: 20rpx;
@@ -199,6 +206,9 @@
     font-size: 24rpx;
     line-height: 28rpx;
     color: #5b5b5b;
+}
+.blue{
+  color:#1296db;
 }
 /*.answer-feed .feed-item .feed-content .answer-actions{*/
     /*width: 690rpx;*/

@@ -8,7 +8,7 @@
       <image class="head-search-image" src="../../images/search.png"></image>
       <input class="head-search-input" placeholder="搜索问题或人" placeholder-class="search-placeholder" />
     </view>
-    <view class="head-question">
+    <view class="head-question" bindtap='bindAskQuestion'>
       <text class='head-question-text'>提问</text>
     </view>
   </view>

@@ -1,7 +1,9 @@
 <!--pages/writeAnswer/writeAnswer.wxml-->
 <view class="answer">
-<textarea  placeholder='我的想法是...' auto-focus />
-</view >
-<view>
-<button class='.btn1'>提交</button>
+<form bindsubmit='submmitAnswer' >
+<textarea bindinput='bindButtonTap'  placeholder='我的想法是...'  focus="{{focus}}" />
+<!-- <button bindtap='bindButtonTap'></button> -->
+<!-- <input bindtap='bindButtonTap'></input> -->
+<button form-type='submit'  >提交</button>
+</form>
 </view>
