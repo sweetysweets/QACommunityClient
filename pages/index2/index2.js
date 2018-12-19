@@ -108,7 +108,6 @@ Page({
     })
 
     wx.request({
-
       url: app.globalData.urlPath + '/getmyfocusquestion',
       //传递参数 userid到后台查询
       // data:{userid:app.globalData.userInfo.userid},

@@ -14,8 +14,13 @@ Page({
               //从数据库获取用户信息
               that.queryUsreInfo();
               //用户已经授权过
-              wx.redirectTo({
-                url: '../answers/answers'
+
+              // wx.redirectTo({
+              //   url: '../index/index'
+              // })
+
+              wx.switchTab({
+                url:'../index2/index2'
               })
             }
           });
@@ -43,12 +48,13 @@ Page({
         success: function (res) {
           //从数据库获取用户信息
           that.queryUsreInfo();
+          // console
           console.log("插入小程序登录用户信息成功！");
         }
       });
       //授权成功后，跳转进入小程序首页
-      wx.redirectTo({
-        url: '../answers/answers'
+      wx.switchTab({
+        url: '../index2/index2'
       })
     } else {
       //用户按了拒绝按钮
