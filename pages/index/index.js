@@ -28,6 +28,19 @@ Page({
       url: '../logs/logs'
     })
   },
+  //点击我关注的人的提问跳转
+  bindQueTab: function(e){
+    var index = parseInt(e.currentTarget.dataset.idx);
+    console.log('index界面的index：',index)
+    wx.navigateTo({
+      url: '../questions/questions?question_id=',
+      data: {
+        question_id:this.data.focusUserQuestion[index].qid, 
+        detail:this.data.focusUserQuestion[index].content,
+        title:this.data.focusUserQuestion[index].title}
+      // data:{title:e.detail}
+    })
+  },
   bindAskQuestion:function(){
     wx.navigateTo({
       url: '../askquestion/askquestion',

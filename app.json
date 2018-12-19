@@ -1,17 +1,22 @@
 {
   "pages": [
-    "pages/questions/questions",
 
     "pages/index/index",
+
+    "pages/questions/questions",
 
     "pages/login/login",
     "pages/comment/comment",
     
+    
+
     "pages/askquestion/askquestion",
     "pages/personal/personal",
     "pages/logs/logs",
-    
+    "pages/answers/answers",
+    "pages/user/user",
     "pages/writeAnswer/writeAnswer"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
