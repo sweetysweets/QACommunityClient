@@ -10,8 +10,17 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     navTab: ["我的关注","与我相关","全部问题"],
     currentNavtab: "0",
-    feed: [],
-    feed_length: 0
+    focusUserQuestion: [],
+    focusUserQuestion_length: 0,
+    focusUserAnswer: [],
+    focusUserAnswer_length: 0,
+    focusQuestion:[],
+    focusQuestion_length: 0,
+    related:[],
+    related_length: 0,
+    allquestions:[],
+    allquestions_length:0,
+    time: null
   },
   //事件处理函数
   bindViewTap: function() {
@@ -26,22 +35,31 @@ Page({
   },
   onLoad: function () {
     console.log('onLoad')
-    var that = this
+    var that = this;
     //调用应用实例的方法获取全局数据
-    this.refresh();
-
+    // this.refresh();
+    // var time = new Date();
+    // var time = util.formatTime(new Date());
+    // // 再通过setData更改Page()里面的data，动态更新页面的数据  
+    // this.setData({
+    //   time: time
+    // });  
     wx.request({
-      url:'http://localhost:8080/QACommunity2/servlet/ServletDemo1',
-      data:{},
+
+      url: app.globalData.urlPath + '/getmyfocususerquestion',
+      //传递参数 userid到后台查询
+      // data:{userid:app.globalData.userInfo.userid},
+      data: { userid: 7 },
       header: {
         //'Content-Type': 'application/json'
       },
-      method:'GET',
+      method: 'GET',
       success: function (res) {
         console.log("success")
         console.log(res.data)
         that.setData({
-          question:res.data
+          focusUserQuestion: res.data,
+          focusUserQuestion_length: res.data.length
         })
         // resolve(res)
       },
@@ -51,6 +69,102 @@ Page({
       }
     })
 
+    wx.request({
+
+      url: app.globalData.urlPath + '/updating/getmyfocususeranswer',
+      //传递参数 userid到后台查询
+      // data:{userid:app.globalData.userInfo.userid},
+      data: { userid: 7 },
+      header: {
+        //'Content-Type': 'application/json'
+      },
+      method: 'GET',
+      success: function (res) {
+        console.log("success")
+        console.log(res.data)
+        that.setData({
+          focusUserAnswer: res.data,
+          focusUserAnswer_length: res.data.length
+        })
+        // resolve(res)
+      },
+      fail: function (res) {
+        // reject(res)
+        console.log("failed")
+      }
+    })
+
+    wx.request({
+
+      url: app.globalData.urlPath + '/getmyfocusquestion',
+      //传递参数 userid到后台查询
+      // data:{userid:app.globalData.userInfo.userid},
+      data: { userid: 7 },
+      header: {
+        //'Content-Type': 'application/json'
+      },
+      method: 'GET',
+      success: function (res) {
+        console.log("success")
+        console.log(res.data)
+        that.setData({
+          focusQuestion: res.data,
+          focusQuestion_length: res.data.length
+        })
+        // resolve(res)
+      },
+      fail: function (res) {
+        // reject(res)
+        console.log("failed")
+      }
+    })
+    wx.request({
+      url: app.globalData.urlPath + '/updating/getmyrelatedanswer',
+      data: { userid: 7 },
+      header: {
+        //'Content-Type': 'application/json'
+      },
+      method: 'GET',
+      success: function (res) {
+        console.log("success")
+        console.log(res.data)
+        that.setData({
+          related: res.data,
+          related_length: res.data.length
+        })
+        // that.onLoad();
+        // resolve(res)
+      },
+      fail: function (res) {
+        // reject(res)
+        console.log("failed")
+      }
+    })
+
+    wx.request({
+      url: app.globalData.urlPath + '/getallquestions',
+      data: { userid: 2 },
+      header: {
+        //'Content-Type': 'application/json'
+      },
+      method: 'GET',
+      success: function (res) {
+        console.log("success")
+        console.log(res.data)
+        that.setData({
+          allquestions: res.data,
+          allquestions_length: res.data.length
+        })
+        // that.onLoad();
+        // resolve(res)
+      },
+      fail: function (res) {
+        // reject(res)
+        console.log("failed")
+      }
+    })
+
+    // for i in 
     // if (app.globalData.userInfo) {
     //   this.setData({
     //     userInfo: app.globalData.userInfo,
@@ -79,12 +193,128 @@ Page({
 
     // }
 
+
     
   },
+
+  onShow: function(){
+    console.log("onShow");
+    // wx.request({
+    //   url: app.globalData.urlPath + '/getmyfocus',
+    //   //传递参数 userid到后台查询
+    //   // data:{userid:app.globalData.userInfo.userid},
+    //   data: { userid: 7 },
+    //   header: {
+    //     //'Content-Type': 'application/json'
+    //   },
+    //   method: 'GET',
+    //   success: function (res) {
+    //     console.log("success")
+    //     console.log(res.data)
+    //     that.setData({
+    //       focus: res.data,
+    //       focus_length: res.data.length
+    //     })
+    //     // resolve(res)
+    //   },
+    //   fail: function (res) {
+    //     // reject(res)
+    //     console.log("failed")
+    //   }
+    // })
+
+  },
   switchTab: function (e) {
+    
     this.setData({
       currentNavtab: e.currentTarget.dataset.idx
     });
+    var currenttab = e.currentTarget.dataset.idx;
+    console.log("当前页面索引是：",currenttab);
+    switch(currenttab)
+    {
+      
+      case 0:
+        console.log("跳转到0页面");
+        // wx.request({
+          
+        //   url: app.globalData.urlPath + '/getmyfocus',
+        //   //传递参数 userid到后台查询
+        //   // data:{userid:app.globalData.userInfo.userid},
+        //   data: { userid: 7 },
+        //   header: {
+        //     //'Content-Type': 'application/json'
+        //   },
+        //   method: 'GET',
+        //   success: function (res) {
+        //     console.log("success")
+        //     console.log(res.data)
+        //     that.setData({
+        //       focus: res.data,
+        //       focus_length: res.data.length
+        //     })
+        //     // resolve(res)
+        //   },
+        //   fail: function (res) {
+        //     // reject(res)
+        //     console.log("failed")
+        //   }
+        // })
+        this.onLoad();
+        break;
+      case 1:
+        console.log("跳转到1页面");
+        // wx.request({
+        //   url: app.globalData.urlPath + '/updating/getmyrelatedanswer',
+        //   data: { userid: 2 },
+        //   header: {
+        //     //'Content-Type': 'application/json'
+        //   },
+        //   method: 'GET',
+        //   success: function (res) {
+        //     console.log("success")
+        //     console.log(res.data)
+        //     that.setData({
+        //       related: res.data,
+        //       related_length: res.data.length
+        //     })
+        //     // that.onLoad();
+        //     // resolve(res)
+        //   },
+        //   fail: function (res) {
+        //     // reject(res)
+        //     console.log("failed")
+        //   }
+        // })
+        this.onLoad();
+        break;
+      case 2:
+        console.log("跳转到页面2");
+        // wx.request({
+        //   url: app.globalData.urlPath + '/getallquestions',
+        //   data: { userid: 2 },
+        //   header: {
+        //     //'Content-Type': 'application/json'
+        //   },
+        //   method: 'GET',
+        //   success: function (res) {
+        //     console.log("success")
+        //     console.log(res.data)
+        //     that.setData({
+        //       allquestions: res.data,
+        //       allquestions_length: res.data.length
+        //     })
+        //     // that.onLoad();
+        //     // resolve(res)
+        //   },
+        //   fail: function (res) {
+        //     // reject(res)
+        //     console.log("failed")
+        //   }
+        // })
+        this.onLoad();
+        break;
+    }
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -94,37 +324,42 @@ Page({
       hasUserInfo: true
     })
   },
-
+  // onShow: function () {
+    
+  //   this.setData({
+  //     student: student
+  //   })
+  // },
 //网络请求数据, 实现刷新
-  refresh0: function () {
-    var index_api = '';
-    util.getData(index_api)
-      .then(function (data) {
-        //this.setData({
-        //
-        //});
-        console.log(data);
-      });
-  },
+  // refresh0: function () {
+  //   var index_api = '';
+  //   util.getData(index_api)
+  //     .then(function (data) {
+  //       //this.setData({
+  //       //
+  //       //});
+  //       console.log(data);
+  //     });
+  // },
 
-  //使用本地 fake 数据实现刷新效果
-  refresh: function () {
-    var feed = util.getDiscovery();
-    console.log("loaddata");
-    var feed_data = feed.data;
-    this.setData({
-      feed: feed_data,
-      feed_length: feed_data.length
-    });
-  },
+  //刷新一次性获取数据
+  // refresh: function () {
+  //   var feed = util.getDiscovery();
+  //   console.log("loaddata");
+  //   var feed_data = feed.data;
+  //   this.setData({
+  //     feed: feed_data,
+  //     feed_length: feed_data.length
+  //   });
+  // },
   //使用本地 fake 数据实现继续加载效果
-  nextLoad: function () {
-    var next = util.discoveryNext();
-    console.log("continueload");
-    var next_data = next.data;
-    this.setData({
-      feed: this.data.feed.concat(next_data),
-      feed_length: this.data.feed_length + next_data.length
-    });
-  }
+  // nextLoad: function () {
+  //   var next = util.discoveryNext();
+  //   console.log("continueload");
+  //   var next_data = next.data;
+  //   this.setData({
+  //     feed: this.data.feed.concat(next_data),
+  //     feed_length: this.data.feed_length + next_data.length
+  //   });
+  // }
 })

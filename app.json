@@ -1,15 +1,17 @@
 {
   "pages": [
-"pages/answers/answers",
+
+
+
     "pages/login/login",
-      "pages/comment/comment",
+    "pages/comment/comment",
     "pages/index/index",
     "pages/askquestion/askquestion",
     "pages/personal/personal",
-
+    "pages/logs/logs",
     "pages/questions/questions",
+    "pages/answers/answers",
     "pages/writeAnswer/writeAnswer"
-   
 
   ],
   "window": {
