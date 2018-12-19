@@ -15,6 +15,7 @@ Page({
     parent_id:0,
     replylist:null,
     reply_index:-1,
+    releaseFocus_comment:true,
 
   },
   bindButtonTap: function() {
@@ -28,6 +29,7 @@ Page({
       reply_id: e.target.dataset.id,
       reply_name: e.target.dataset.name,
       reply_index: e.target.dataset.idx,
+      releaseFocus_comment:false
     })
   },
   bindKeyInput: function(e) {
@@ -160,6 +162,7 @@ Page({
 
         that.setData({
           releaseFocus:false,
+          releaseFocus_comment:true,
           reply_content:null,
         })
       }
@@ -190,7 +193,6 @@ Page({
         that.setData({
           replylist: datas, 
           [key]: !val,
-          
         })
         console.log(that.data.replylist)
       }
@@ -200,6 +202,7 @@ Page({
 
   sendComment: function (e) {
     var that = this
+    console.log(getApp().globalData.userInfo);
 
     wx.request({
       url: getApp().globalData.urlPath + 'comment/addComment',
