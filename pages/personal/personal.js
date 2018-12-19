@@ -1,22 +1,16 @@
 //获取应用实例  
 var app = getApp()
 
-
-// var allData = require('../../data/data.js')
-
-
 Page({
   data: {
     /** 
      * 页面配置 
      */
-    concerntext: "已关注",
-    flag: true,
     winWidth: 0,
     winHeight: 0,
     // tab切换  
     currentTab: 0,
-    // userInfo: {},
+    myInfo: {},
     user_key: [],
   },
   onLoad: function (option) {
@@ -29,14 +23,11 @@ Page({
         });
       }
     });
-    console.log('onLoad')
-    //调用应用实例的方法获取全局数据
-    // app.getUserInfo(function (userInfo) {
-    //   //更新数据
-    //   that.setData({
-    //     userInfo: userInfo
-    //   })
-    // })
+    var myInfo = app.globalData.userInfo;
+    console.log("个人信息"+myInfo)
+    that.setData({
+      myInfo:myInfo
+    })
   },
   /** 
    * 获取关注用户
@@ -76,7 +67,7 @@ Page({
           var problem_key = res.data.problemList;
           console.log(problem_key);
           if (problem_key == null) {
-            var toastText = '获取用户信息失败' + res.data.errMsg;
+            var toastText = '获取问题信息失败' + res.data.errMsg;
             wx.showToast({
               title: toastText,
               icon: '',
@@ -119,11 +110,11 @@ Page({
   /**
    *  点击进入问题详情页面
    * */
-  onDetails: function (event) {
-    wx.navigateTo({
-      url: "/pages/questions/questions"
-    });
-  },
+  // onDetails: function (event) {
+  //   wx.navigateTo({
+  //     url: "/pages/user/user?uid=" + uid
+  //   });
+  // },
   /**
    *  点击进入用户主页
    * */
