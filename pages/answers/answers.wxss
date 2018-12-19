@@ -1,5 +1,8 @@
 /**answer.wxss**/
-
+.bottom-txt{
+  font-size: 400rpx;
+  font-weight:700; 
+}
 .container {
     padding: 0;
     font-size: 14rpx;
@@ -104,27 +107,85 @@
     padding: 20rpx 40rpx;
 }
 .answer-footer .good{
-    flex: 1;
-    /*display: inline-block;*/
+    flex: 1.3;
+    /* display: inline-block;  */
     height: 40rpx;
     border: solid 1px #d1d1d1;
     border-radius: 3px;
     padding: 10rpx 8rpx;
     margin: 10rpx 0;
+    display: flex;
 }
+/* .answer-footer .good{
+    flex: 1.5;
+    display: inline-block;
+    height: 40rpx;
+    width: 30rpx;
+    border: solid 1px #d1d1d1;
+    border-radius: 3px;
+    padding: 10rpx 8rpx;
+    margin: 10rpx 0;
+    display: flex;
+} */
+
+/* .answer-footer .bad{
+   flex: 0.5;
+    display: inline-block; 
+    height: 40rpx;
+    width: 40rpx;
+    border: solid 1px #d1d1d1;
+    border-radius: 3px;
+    padding: 10rpx 8rpx;
+    margin: 10rpx 0 0 200rpx;
+    display: flex;
+} 
+.flex-itembad{
+  text-align: center;
+}  */
+
+
 .answer-footer .good .good-bad{
     display: inline-block;
 }
 .answer-footer .good image{
     display: inline-block;
     width: 38rpx;
-    height: 38rpx;
+    height: 23rpx;
     vertical-align: middle;
+    padding-bottom: 3rpx;
+}
+/* .answer-footer .good image{ */
+    /* display: inline-block; */
+    /* width: 38rpx;
+    height: 35rpx;
+    vertical-align: middle;
+    padding-bottom: 10rpx;
+    padding: 60rpx,0,0,20rpx;
+} */
+/* .answer-footer .good image{
+    width: 38rpx;
+    height: 35rpx; 
+    vertical-align: middle;
+    padding-bottom: 10rpx;
+    padding: 60rpx,0,0,20rpx; 
+    margin: 5rpx 0 10rpx 10rpx;
+} */
+.good-bad-image{
+    align-items: center; 
+    /* display: inline-block;
+    width: 8rpx;
+    height: 8rpx;
+    vertical-align: middle;
+    padding-bottom: 13rpx; */
 }
 .answer-footer .good .good-num{
     display: inline-block;
-    padding: 10rpx 4rpx;
-    /*font-size: 24rpx;*/
+    /* display: inline; */
+    /* padding: 10rpx 10rpx 40rpx 30rpx; */
+    /* margin: 20rpx; */
+    font-size: 25rpx;
+    font-weight: 600;
+    margin: 5rpx 0 5rpx 20rpx;
 }
 .answer-footer .operation-wrp{
     flex: 5;
@@ -145,7 +206,8 @@
 }
 .answer-footer .operation-btn text{
     display: block;
-    font-size: 14rpx;
+    font-size: 400;
+    font-size: 20rpx;
     color: #bebebe;
 }
 .container{
@@ -164,12 +226,14 @@
 .flex-item{
   flex-grow: 1;
   text-align: center;
+  /* text-align: left; */
 }
 .container .feed-item{
   width: 690rpx;
   padding: 30rpx 30rpx 20rpx;
   margin: 7rpx 0 6rpx 0;
   background: #ffffff;
+  /* background: blue; */
   border-top: 1px solid #eee;
   border-bottom: 1px solid #eee;
   box-shadow: 0 2px 5px #eeeeee;
@@ -209,7 +273,7 @@
   font-size: 24rpx;
 }
 .container .feed-item .feed-content .answer-actions .dot ::after{
-  content: "•";
+  content: "?";
 }
 .container .feed-item .feed-source .avatar image{
   /*position: absolute;*/
@@ -229,4 +293,7 @@
   margin: 0 0 0 15rpx;
   color: #a0acac;
   font-size: 26rpx;
+}
+.blue{
+  color:#298DE5;
 }

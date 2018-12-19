@@ -1,7 +1,29 @@
 @import "../../pages/u-template/u-template.wxss";
 @import "../../pages/p-template/p-template.wxss";
 
-.user {
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /*padding: 200rpx 0;*/
+  box-sizing: border-box;
+  background: #F0F4F3;
+  padding: 0;
+  font-size: 14rpx;
+  color: #000;
+}
+  .flex-wrp{
+    display: flex;
+  }
+
+  .flex-item{
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  .user {
     width: 750rpx;
     background: #ffffff;
     padding: 30rpx 25rpx 30rpx 0;
