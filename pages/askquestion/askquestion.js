@@ -10,8 +10,8 @@ Page({
     items:[
       {name:'0',value:'公开回答',checked:'true'},
       {name: '1', value: '关闭回答'}
-    ]
-
+    ],
+    user_id:2
   },
   radioChange:function(e){
     this.setData({
@@ -44,7 +44,11 @@ Page({
       console.log("content:"+this.data.mycontent);
       //console.log("time:"+mytime)
       wx.request({
+
+        
+
         url: app.globalData.urlPath+'submitquestion?userid='+uid+'&title=' + this.data.mytitle + '&content=' + this.data.mycontent+'&state='+this.data.mystate,
+
         method:'POST',
         success:function(res){
           console.log("res"+res.data);
@@ -70,6 +74,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    var that = this;
+    // that.data.user_id= app.globalData.userinfo.uid;
+    console.log(app.globalData.userinfo.id);
 
   },
 

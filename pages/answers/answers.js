@@ -29,7 +29,7 @@ Page({
     var that = this;
   
     console.log(options)
-   console.log(options.id)
+    console.log('Answers界面中的answer_id：'+options.answer_id)
 
     that.setData({
       //question_id:options.question_id
