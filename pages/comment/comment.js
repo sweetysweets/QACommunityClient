@@ -6,9 +6,8 @@ Page({
     answer_id:0,
     pagesize:2,
     pagenumber:0,
-    commentlist:null,
-    comment_length:1
-
+    commentlist:[],
+    comment_length:0
   },
   bindButtonTap: function() {
     this.setData({

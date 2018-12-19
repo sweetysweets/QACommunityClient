@@ -1,9 +1,9 @@
-<import src="../../pages/u-template/u-template.wxml"></import>
-<import src="../../pages/p-template/p-template.wxml"></import>
+<import src="../../page/u-template/u-template.wxml"></import>
+<import src="../../page/p-template/p-template.wxml"></import>
 <view class="container">
   <view class="user flex-wrp">
     <view class="avatar flex-item">
-      <image class="userinfo-avatar"  src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+      <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     </view>
     <view class="user-info flex-item">
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
@@ -22,8 +22,21 @@
     <!-- 用户列表 -->
     <swiper-item>
       <block wx:for="{{user_key}}" wx:for-item="item">
-        <view bindtap="onUser" data-ID="{{item.user_id}}">
-        <template is="user" data="{{...item}}" />
+        <view bindtap="onUser" data-ID="{{item.id}}">
+          <view class="avatar">
+            <view class="avatar-item flex-wrp">
+              <view class="avatar-icon flex-item">
+                <image src="{{item.avater}}">rimayo</image>
+              </view>
+              <view class="avatar-name flex-item">
+                <text class="avatarinfo-name">huoqubdao</text>
+                <text class="discription">gerenmiaoshu</text>
+              </view>
+              <view class="is-concern" bindtap="onConcern">
+                <text class="avatar-concern">{{item.token}}</text>
+              </view>
+            </view>
+          </view>
         </view>
       </block>
     </swiper-item>

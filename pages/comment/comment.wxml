@@ -1,81 +1,40 @@
-<view >
+<!--index.wxml-->
+<!--本来想用模板的，但是调试有错误，不能显示数据-->
 
-<!-- 显示评论列表 -->
-<view class="comment_list_box">
-  <view>
-    <view class="comment_list" wx:key="{{commentlist.comment_id}}">
-      <button class="avatar_button" bindgetuserinfo='avatarClicked' open-type="test" lang="zh_CN" data-user_id='{{commentlist.user_id}}'>
-        <view class="comment_avatar">
-          <image src="{{commentlist.avater}}" />
-        </view>
-      </button>
-      <!-- 评论昵称/日期/内容/赞-->
-      <view class="comment_total_box">
-        <!-- 父评论 -->
-        <view class="comment_content_box">
-          <view class="comment_meta">
-            <view class="comment_nickname">
-              <text>{{item.nickname}}</text>
-              <view class="commnet_date">
-                <text>{{item.time}}</text>
+<scroll-view scroll-y="true" class="container" bindscrolltoupper="upper" bindscrolltolower="lower" scroll-top="{{scrollTop}}">
+    <view class="ctnt0">
+      <block wx:for="{{commentlist}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+        <!-- 千万注意css样式的层级关系，踩过坑。。。 -->
+        <view class="feed-item">
+          <view class="feed-source">
+            <a>
+              <view class="avatar">
+                <image src="{{item.feed_source_img}}"></image>
               </view>
-            </view>
-            <block wx:if='{{item.zanCurrent}}'>
-              <view class="comment_zan" bindtap='zanCommentClick' data-comment_id='{{item.id}}' data-user_id='{{item.userId}}' data-zan_id='{{item.zanId}}' data-is_sub_comment='false' data-p_index="{{item.p_index}}">
-                <image src="./images/zan_self.png"></image>
-                <text class="comment_zan_num" wx:if="{{item.zanNum > 0}}">{{item.zanNum}}</text>
-              </view>
-            </block>
-            <block wx:else>
-              <view class="comment_zan" bindtap='zanCommentClick' data-comment_id='{{item.id}}' data-user_id='{{item.userId}}' data-zan_id='{{item.zanId}}' data-is_sub_comment='false' data-p_index="{{item.p_index}}">
-                <image src="./images/zan.png"></image>
-                <text class="comment_zan_num" wx:if="{{item.zanNum > 0}}">{{item.zanNum}}</text>
-              </view>
-            </block>
+              <text>{{item.feed_source_name}}</text>
+            </a>
           </view>
-          <view class="comment_content" bindtap='commentTextTap' bindlongpress='commentLongTap' data-comment_id='{{item.id}}' data-user_id='{{item.userId}}' data-zan_id='{{item.zanId}}' data-p_comment_id='{{item.p_id}}' data-nickname="{{item.nickName}}" data-p_index="{{item.p_index}}">{{item.content}}</view>
-        </view>
-        
-        <!-- 子评论 -->
-        <view class="sub_comment_list_box" wx:if="{{item.subCommentList.length > 0}}">
-          <view class="sub_comment_display_box" wx:for="{{item.subCommentList}}" wx:for-item="sub_item" wx:key="{{sub_item.id}}">
-            <button class="avatar_button" bindgetuserinfo='avatarClicked' open-type="getUserInfo" lang="zh_CN" data-user_id='{{sub_item.userId}}'>
-              <view class="comment_avatar">
-                <image src="{{sub_item.avatarUrl}}" />
+          <view class='feed-content'>
+            <view class='question' qid='question_id' bindtap='bindQueTab'>
+              <a class='question-link'>
+                <text>{{item.question}}</text>
+              </a>
+            </view>
+            <view class='answer-body'>
+              <view bindtap='bindItemTap'>
+                <text class="answer-body answer-text" aid="{{answer_id}}">{{item.answer_ctnt}}</text>
               </view>
-            </button>
-            <view class="sub_comment_box">
-              <view class="comment_meta">
-                <view class="comment_nickname">
-                  <text>{{sub_item.showNickName}}</text>
-                  <view class="commnet_date">
-                    <text>{{sub_item.time}}</text>
-                  </view>
+              <view class='answer-actions' bindtap='bindItemTap'>
+                <view class='like dot'>
+                  <a>{{item.good_num}} 赞同 </a>
                 </view>
-                <block wx:if='{{sub_item.zanCurrent}}'>
-                  <view class="comment_zan" bindtap='zanCommentClick' data-comment_id='{{sub_item.id}}' data-user_id='{{sub_item.userId}}' data-zan_id='{{sub_item.zanId}}' data-is_sub_comment='true' data-p_index="{{sub_item.p_index}}">
-                    <image src="./images/zan_self.png"></image>
-                    <text class="comment_zan_num" wx:if="{{sub_item.zanNum > 0}}">{{sub_item.zanNum}}</text>
-                  </view>
-                </block>
-                <block wx:else>
-                  <view class="comment_zan" bindtap='zanCommentClick' data-comment_id='{{sub_item.id}}' data-user_id='{{sub_item.userId}}' data-zan_id='{{sub_item.zanId}}' data-is_sub_comment='true' data-p_index="{{sub_item.p_index}}">
-                    <image src="./images/zan.png"></image>
-                    <text class="comment_zan_num" wx:if="{{sub_item.zanNum > 0}}">{{sub_item.zanNum}}</text>
-                  </view>
-                </block>
+                <view class='comments dot'>
+                  <a>{{item.comment_num}} 评论</a>
+                </view>
               </view>
-              <view class="comment_content" bindtap='commentTextTap' bindlongpress='subCommentLongTap' data-comment_id='{{sub_item.id}}' data-user_id='{{sub_item.userId}}' data-zan_id='{{sub_item.zanId}}' data-p_comment_id='{{sub_item.p_id}}' data-nickname="{{sub_item.nickName}}"
-                data-p_index="{{sub_item.p_index}}">{{sub_item.content}}</view>
             </view>
           </view>
         </view>
-      </view>
+      </block>
     </view>
-  </view>
- 
-</view>
-
-
-
-</view>
+</scroll-view>

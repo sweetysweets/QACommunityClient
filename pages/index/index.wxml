@@ -9,7 +9,8 @@
       <input class="head-search-input" placeholder="搜索问题或人" placeholder-class="search-placeholder" />
     </view>
     <view class="head-question">
-      <text class='head-question-text'>提问</text>
+      <!-- <text class='head-question-text'>提问</text> -->
+      <image class="head-search-image" src='../../images/question.png'></image>
     </view>
   </view>
   <view class="head-tab flex-wrp flex-tab">
@@ -19,8 +20,174 @@
   </view>
   <scroll-view scroll-view scroll-y="true" class="container discovery withtab" bindscrolltoupper="upper" bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <view class="ctnt0" hidden="{{currentNavtab==0 ? '' : true}}">
-      <block wx:for="{{feed}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+      <block wx:for="{{focusUserQuestion}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
         <!-- 千万注意css样式的层级关系，踩过坑。。。 -->
+        <view class="feed-item">
+          <view class="feed-source">
+            <a>
+              <view class="avatar">
+                <image src="{{item.user.avater}}"></image>
+              </view>
+              <text space='emsp'>{{item.user.name}}  提问了</text>
+
+            </a>
+          </view>
+          <view class='feed-content'>
+            <view class='question' qid='question_id' bindtap='bindQueTab'>
+              <a class='question-link'>
+                <text>{{item.title}}</text>
+              </a>
+            </view>
+            <view class='answer-body'>
+              <view bindtap='bindItemTap'>
+                <text class="answer-body answer-text" aid="{{answer_id}}" space="emsp">问题详情: {{item.content}}</text>
+              </view>
+              <view class='answer-actions' bindtap='bindItemTap'>
+                <view class='like dot'>
+                  <!-- <a>{{item.good_num}} 赞同 </a> -->
+                </view>
+                <view class='comments dot'>
+                  <!-- <a>{{item.comment_num}} 评论</a> -->
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- <template is='guanzhuItem' data="{{...item}}"/> -->
+
+
+
+
+        <!-- <template is="postItem" data="{{...item}}"/> -->
+      </block>
+
+      <block wx:for="{{focusUserAnswer}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+        <view class="feed-item">
+          <view class="feed-source">
+            <a class="">
+              <view class="avatar">
+                <image src="{{item.user.avater}}"></image>
+              </view>
+              <text space='emsp'>{{item.user.name}} 回答了</text>
+            </a>
+            <!-- <image class="item-more" mode="aspectFit" src="../../images/more.png"></image> -->
+          </view>
+          <view class="feed-content">
+            <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
+              <a class="question-link">
+                <text>{{item.question.title}}</text>
+              </a>
+            </view>
+            <view class="answer-body">
+              <view bindtap="bindItemTap">
+                <text class="answer-txt" aid="{{answer_id}}" space="emsp">答: {{item.answer.content}}</text>
+              </view>
+
+            </view>
+            <view class="answer-actions" bindtap="bindItemTap">
+              <view class="like dot">
+                <a>{{item.answer.support}} 赞同 </a>
+              </view>
+              <view class="comments dot">
+                <a>{{item.answer.against}} 反对 </a>
+              </view>
+              <view class="comments dot">
+                <a>{{item.answer.time}}</a>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+
+      <block wx:for="{{focusQuestion}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+        <!-- 千万注意css样式的层级关系，踩过坑。。。 -->
+        <view class="feed-item">
+          <view class="feed-source">
+            <a>
+              <view class="avatar">
+                <image src="{{item.user.avater}}"></image>
+              </view>
+              <text space='emsp'>{{item.user.name}}  你关注的问题有更新哦</text>
+            </a>
+          </view>
+          <view class='feed-content'>
+            <view class='question' qid='question_id' bindtap='bindQueTab'>
+              <a class='question-link'>
+                <text>{{item.title}}</text>
+              </a>
+            </view>
+            <view class='answer-body'>
+              <view bindtap='bindItemTap'>
+                <text class="answer-body answer-text" aid="{{answer_id}}" space="emsp">问题详情: {{item.content}}</text>
+              </view>
+              <view class='answer-actions' bindtap='bindItemTap'>
+                <view class='like dot'>
+                  <!-- <a>{{item.good_num}} 赞同 </a> -->
+                </view>
+                <view class='comments dot'>
+                  <!-- <a>{{item.comment_num}} 评论</a> -->
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- <template is='guanzhuItem' data="{{...item}}"/> -->
+
+
+
+
+        <!-- <template is="postItem" data="{{...item}}"/> -->
+      </block>
+
+    </view>
+
+    <view class="ctnt1 " hidden="{{currentNavtab==1 ? '' : true}}">
+      <!-- <text>与我相关</text> -->
+      <block wx:for="{{related}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+        <view class="feed-item">
+          <view class="feed-source">
+            <a class="">
+              <view class="avatar">
+                <image src="{{item.user.avater}}"></image>
+              </view>
+              <text>{{item.user.name}}</text>
+            </a>
+            <!-- <image class="item-more" mode="aspectFit" src="../../images/more.png"></image> -->
+          </view>
+          <view class="feed-content">
+            <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
+              <a class="question-link">
+                <text>{{item.question.title}}</text>
+              </a>
+            </view>
+            <view class="answer-body">
+              <view bindtap="bindItemTap">
+                <text class="answer-txt" aid="{{answer_id}}" space="emsp">答: {{item.answer.content}}</text>
+              </view>
+
+            </view>
+            <view class="answer-actions" bindtap="bindItemTap">
+              <view class="like dot">
+                <a>{{item.answer.support}} 赞同 </a>
+              </view>
+              <view class="comments dot">
+                <a>{{item.answer.against}} 反对 </a>
+              </view>
+              <view class="comments dot">
+                <a>{{item.answer.time}}</a>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <view class="ctnt2 " hidden="{{currentNavtab==2 ? '' : true}}">
+      <block wx:for="{{allquestions}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
+        <!-- 千万注意css样式的层级关系，踩过坑。。。 -->
+        <!-- <block wx:if="{{feed.}}"></block> -->
         <view class="feed-item">
           <view class="feed-source">
             <a>
@@ -38,15 +205,15 @@
             </view>
             <view class='answer-body'>
               <view bindtap='bindItemTap'>
-                <text class="answer-body answer-text" aid="{{answer_id}}" space="emsp">问题详情 {{item.content}}</text>
+                <text class="answer-body answer-text" aid="{{answer_id}}" space="emsp">问题详情: {{item.content}}</text>
               </view>
-              <view class='answer-actions' bindtap='bindItemTap'>
-                <view class='like dot'>
-                  <a>{{item.good_num}} 赞同 </a>
-                </view>
-                <view class='comments dot'>
-                  <a>{{item.comment_num}} 评论</a>
-                </view>
+            </view>
+            <view class='answer-actions' bindtap='bindItemTap'>
+              <view class='like dot'>
+                <!-- <a>{{item.good_num}} 赞同 </a> -->
+              </view>
+              <view class='comments dot'>
+                <!-- <a>{{item.comment_num}} 评论</a> -->
               </view>
             </view>
           </view>
@@ -61,86 +228,8 @@
       </block>
     </view>
 
-    <view class="ctnt1 " hidden="{{currentNavtab==1 ? '' : true}}">
-      <!-- <text>与我相关</text> -->
-      <block wx:for="{{feed}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
-        <view class="feed-item">
-          <view class="feed-source">
-            <a class="">
-              <view class="avatar">
-                <image src="{{item.user.avater}}"></image>
-              </view>
-              <text>{{item.feed_source_txt}}</text>
-            </a>
-            <image class="item-more" mode="aspectFit" src="../../images/more.png"></image>
-          </view>
-          <view class="feed-content">
-            <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
-              <a class="question-link">
-                <text>{{item.question}}</text>
-              </a>
-            </view>
-            <view class="answer-body">
-              <view bindtap="bindItemTap">
-                <text class="answer-txt" aid="{{answer_id}}">{{item.answer_ctnt}}</text>
-              </view>
-              <view class="answer-actions" bindtap="bindItemTap">
-                <view class="like dot">
-                  <a>{{item.good_num}} 赞同 </a>
-                </view>
-                <view class="comments dot">
-                  <a>{{item.comment_num}} 评论 </a>
-                </view>
-
-              </view>
-            </view>
-          </view>
-        </view>
-      </block>
-    </view>
-
-    <view class="ctnt2 " hidden="{{currentNavtab==2 ? '' : true}}">
-      <block wx:for="{{feed}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
-        <!-- 千万注意css样式的层级关系，踩过坑。。。 -->
-        <view class="feed-item">
-          <view class="feed-source">
-            <a>
-              <view class="avatar">
-                <image src="{{item.feed_source_img}}"></image>
-              </view>
-              <text>{{item.feed_source_name}}</text>
-            </a>
-          </view>
-          <view class='feed-content'>
-            <view class='question' qid='question_id' bindtap='bindQueTab'>
-              <a class='question-link'>
-                <text>{{item.question}}</text>
-              </a>
-            </view>
-            <view class='answer-body'>
-              <view bindtap='bindItemTap'>
-                <text class="answer-body answer-text" aid="{{answer_id}}">{{item.answer_ctnt}}</text>
-              </view>
-              <view class='answer-actions' bindtap='bindItemTap'>
-                <view class='like dot'>
-                  <a>{{item.good_num}} 赞同 </a>
-                </view>
-                <view class='comments dot'>
-                  <a>{{item.comment_num}} 评论</a>
-                </view>
-              </view>
-            </view>
-          </view>
-        </view>
-
-        <!-- <template is='guanzhuItem' data="{{...item}}"/> -->
 
 
-
-
-        <!-- <template is="postItem" data="{{...item}}"/> -->
-      </block>
-    </view>
   </scroll-view>
 
 
