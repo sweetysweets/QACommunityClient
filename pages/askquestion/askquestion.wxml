@@ -9,7 +9,7 @@
 <view style='padding:20rpx 20rpx 20rpx 20rpx'>
 <radio-group class='radio-group' bindchange='radioChange'>
   <label class='radio' wx:for="{{items}}"> 
-    <radio value="{{item.name}}" checked="{{item.checked}}"/>{{item.value}}
+    <radio value="{{item.name}}" />{{item.value}}
   </label>
 </radio-group>
 </view>
