@@ -54,7 +54,8 @@ Page({
         console.log(res.data)
         wx.navigateBack({
           
-          delta: 1
+          delta: 2
+          
 
         })
 

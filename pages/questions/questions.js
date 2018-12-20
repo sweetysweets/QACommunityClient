@@ -28,9 +28,9 @@ Page({
   //     data:({
   //       question_id:this.data.question_id
   //     })
-      
+
   //   })
-    
+
   // },
   onLoad: function(options) {
 
