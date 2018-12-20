@@ -29,26 +29,28 @@ Page({
     })
   },
   //点击我关注的人的提问跳转
-  bindQueTab: function(e){
-    var index = parseInt(e.currentTarget.dataset.idx);
-    console.log('index界面的index：',index)
-    wx.navigateTo({
-      url: '../questions/questions?question_id=',
-      data: {
-        question_id:this.data.focusUserQuestion[index].qid, 
-        detail:this.data.focusUserQuestion[index].content,
-        title:this.data.focusUserQuestion[index].title}
-      // data:{title:e.detail}
-    })
-  },
-  bindAskQuestion:function(){
-    wx.navigateTo({
-      url: '../askquestion/askquestion',
-    })
-  },
+  // bindQueTab: function(e){
+  //   var index = parseInt(e.currentTarget.dataset.idx);
+  //   console.log('index界面的index：',index)
+  //   wx.navigateTo({
+  //     url: '../questions/questions?question_id=',
+  //     data: {
+  //       question_id:this.data.focusUserQuestion[index].qid, 
+  //       detail:this.data.focusUserQuestion[index].content,
+  //       title:this.data.focusUserQuestion[index].title}
+  //     // data:{title:e.detail}
+  //   })
+  // },
+  // bindAskQuestion:function(){
+  //   wx.navigateTo({
+  //     url: '../askquestion/askquestion',
+  //   })
+  // },
   onLoad: function () {
-    console.log('onLoad')
+    console.log('onLoad');
     var that = this;
+    that.data.userInfo = app.globalData.userInfo;
+    console.log('userid=',this.data.userInfo.id);
     //调用应用实例的方法获取全局数据
     // this.refresh();
     // var time = new Date();
@@ -58,11 +60,10 @@ Page({
     //   time: time
     // });  
     wx.request({
-
       url: app.globalData.urlPath + '/getmyfocususerquestion',
       //传递参数 userid到后台查询
       // data:{userid:app.globalData.userInfo.userid},
-      data: { userid: 7 },
+      data: { userid: this.data.userInfo.id },
       header: {
         //'Content-Type': 'application/json'
       },
@@ -87,7 +88,7 @@ Page({
       url: app.globalData.urlPath + '/updating/getmyfocususeranswer',
       //传递参数 userid到后台查询
       // data:{userid:app.globalData.userInfo.userid},
-      data: { userid: 7 },
+      data: { userid: this.data.userInfo.id },
       header: {
         //'Content-Type': 'application/json'
       },
@@ -111,7 +112,7 @@ Page({
       url: app.globalData.urlPath + '/getmyfocusquestion',
       //传递参数 userid到后台查询
       // data:{userid:app.globalData.userInfo.userid},
-      data: { userid: 7 },
+      data: { userid: this.data.userInfo.id },
       header: {
         //'Content-Type': 'application/json'
       },
@@ -132,7 +133,7 @@ Page({
     })
     wx.request({
       url: app.globalData.urlPath + '/updating/getmyrelatedanswer',
-      data: { userid: 7 },
+      data: { userid: this.data.userInfo.id },
       header: {
         //'Content-Type': 'application/json'
       },
@@ -155,7 +156,7 @@ Page({
 
     wx.request({
       url: app.globalData.urlPath + '/getallquestions',
-      data: { userid: 2 },
+      data: { userid: this.data.userInfo.id },
       header: {
         //'Content-Type': 'application/json'
       },

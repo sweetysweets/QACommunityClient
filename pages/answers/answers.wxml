@@ -1,17 +1,17 @@
 <!--answer.wxml-->
 <view class="container">
     <view class="question" bindtap="toQuestion">
-        <text class="question-title">选择 Kindle 而不是纸质书的原因是什么？</text>
+        <text class="question-title">{{question_title}}</text>
     </view>
     <view class="answerer-wrp">
         <view class="bg-half"></view>
         <view class="answerer flex-wrp">
             <view class="avatar flex-item">
-                <image src="../../images/icon1.jpeg"></image>
+                <image src="{{user_avatar_src}}"></image>
             </view>
             <view class="answerer-info flex-item">
-                <text class="answerer-name">Rebecca</text>
-                <text class="answerer-des">WEB前端*不靠谱天气预报员*想做代码小仙女</text>
+                <text class="answerer-name">{{user_name}}</text>
+                <text class="answerer-des">{{user_description}}</text>
             </view>
          <view class="follow flex-item">
                 <text bindtap='follow_change' wx:if="{{follow}}">十  关注</text>
