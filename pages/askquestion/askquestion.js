@@ -11,7 +11,6 @@ Page({
       {name:'0',value:'公开回答',checked:'true'},
       {name: '1', value: '关闭回答'}
     ],
-    user_id:2
   },
   radioChange:function(e){
     this.setData({
@@ -74,11 +73,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    var that = this;
-    // that.data.user_id= app.globalData.userinfo.uid;
-    console.log(app.globalData.userinfo.id);
-
   },
 
   /**
