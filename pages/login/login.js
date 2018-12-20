@@ -27,6 +27,7 @@ Page({
         }
       }
     })
+    
   },
   bindGetUserInfo: function (e) {
     if (e.detail.userInfo) {
@@ -48,6 +49,7 @@ Page({
         success: function (res) {
           //从数据库获取用户信息
           that.queryUsreInfo();
+          // console
           console.log("插入小程序登录用户信息成功！");
         }
       });
