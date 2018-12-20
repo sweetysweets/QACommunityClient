@@ -8,6 +8,8 @@ Page({
     question_id:5,
     title:'',
 
+    isfollowed:false,
+    allfollowed:[],
 
     answer_id:2,
 
@@ -36,6 +38,11 @@ Page({
       answer_id:options.id
     })
    
+    //获取所有关注的对象
+    wx.request({
+      url: 'http://localhost:8080/',
+    })
+
     wx.request({
       url: 'http://localhost:8080/answer/queryAnswer',
       data:{

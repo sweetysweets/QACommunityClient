@@ -39,7 +39,7 @@ Page({
     }else{
       //var mytime =util.formatTime(new Date);
 
-       var uid = app.globalData.userInfo.uid;
+       var uid = app.globalData.userInfo.id;
       console.log("title:" + this.data.mytitle);
       console.log("content:"+this.data.mycontent);
       //console.log("time:"+mytime)
@@ -56,7 +56,7 @@ Page({
             title: "已成功发布问题"
           });
           wx.switchTab({
-            url: '../index/index',
+            url: '../index2/index2',
           });
           console.log("呵呵");
         },
@@ -76,7 +76,7 @@ Page({
   onLoad: function (options) {
     var that = this;
     // that.data.user_id= app.globalData.userinfo.uid;
-    console.log(app.globalData.userinfo.id);
+    console.log(app.globalData.userInfo.id);
   },
 
   /**
