@@ -56,6 +56,7 @@
             </view>
             <view wx:if="{{good}}" class="good-num" >{{support}}</view>
             <view wx:else class="good-num blue">{{support}}</view>
+
         </view>
 
         <!-- <view class="good flex-item">

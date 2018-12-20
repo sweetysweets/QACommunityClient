@@ -11,7 +11,6 @@ Page({
       {name:'0',value:'公开回答',checked:'true'},
       {name: '1', value: '关闭回答'}
     ],
-    user_id:2
   },
   radioChange:function(e){
     this.setData({
@@ -39,7 +38,9 @@ Page({
     }else{
       //var mytime =util.formatTime(new Date);
 
-       var uid = app.globalData.userInfo.uId;
+
+       var uid = app.globalData.userInfo.id;
+
       console.log("title:" + this.data.mytitle);
       console.log("content:"+this.data.mycontent);
       //console.log("time:"+mytime)
@@ -56,7 +57,7 @@ Page({
             title: "已成功发布问题"
           });
           wx.switchTab({
-            url: '../index/index',
+            url: '../index2/index2',
           });
           console.log("呵呵");
         },
@@ -74,11 +75,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    var that = this;
-    // that.data.user_id= app.globalData.userinfo.uid;
-    console.log(app.globalData.userinfo.id);
-
   },
 
   /**

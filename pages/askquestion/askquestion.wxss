@@ -1,1 +1,24 @@
 /* pages/askQuestion/askquestion.wxss */
+radio .wx-radio-input{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx;
+   height: 40rpx;
+}
+/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked{
+   border: none;
+   background: #378dd2;
+}
+/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
+radio .wx-radio-input.wx-radio-input-checked::before{
+   border-radius: 50%;/* 圆角 */
+   width: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+   height: 40rpx; /* 选中后对勾大小，不要超过背景的尺寸 */
+   line-height: 40rpx;
+   text-align: center;
+   font-size:30rpx; /* 对勾大小 30rpx */
+   color:#fff; /* 对勾颜色 白色 */
+   background: #378dd2;
+   transform:translate(-50%, -50%) scale(1);
+   -webkit-transform:translate(-50%, -50%) scale(1);
+}

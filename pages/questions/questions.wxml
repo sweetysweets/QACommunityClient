@@ -1,22 +1,22 @@
 <!--question.wxml-->
 <view class="container">
-    <view class="question-wrp">
-        <view class="question-item">
-            <!-- <view class="que-tag">
+  <view class="question-wrp">
+    <view class="question-item">
+      <!-- <view class="que-tag">
                 <text class="tag">阅读</text>
                 <text class="tag">电子书</text>
                 <text class="tag">Kindle</text>
                 <text class="tag">书籍</text>
                 <text class="tag">文学</text>
             </view> -->
-            <view class="que-title">
-                {{question_title}}
-            </view>
-            <view class="que-content" >
-                {{question_content}}
-            </view>
-            <!-- <view class="que-follow"> -->
-                <!-- <view class="left">
+      <view class="que-title">
+        {{question_title}}
+      </view>
+      <view class="que-content">
+        {{question_content}}
+      </view>
+      <!-- <view class="que-follow"> -->
+      <!-- <view class="left">
                     <view class="watch">
                         <image src="../../images/eye.png"></image>
                         <text>3316</text>
@@ -26,63 +26,67 @@
                         <text>27</text>
                     </view>
                 </view> -->
-                <!-- <view class="right">
+      <!-- <view class="right">
                     关注
                 </view> -->
-            <!-- </view> -->
-        </view>
-        <view class="que-operate flex-wrp">
-            <view class="invite flex-item">
-                <image bindtap='change_followq' wx:if="{{followq}}" src="../../images/关注.png"></image>
-                <image bindtap='change_followq' wx:else src="../../images/蓝-关注.png"></image>
-                <text bindtap='change_followq' wx:if="{{followq}}">关注问题</text>
-                <text class='blue' bindtap='change_followq' wx:else >已关注问题</text>
-            </view>
-            <view class="write flex-item" bindtap='toWriteAnswer'>
-                <image src="../../images/write.png"></image>
-                <text>我来回答</text>
-            </view>
-        </view>
+      <!-- </view> -->
     </view>
+    <view class="que-operate flex-wrp">
+      <view class="invite flex-item">
+        <image bindtap='change_followq' wx:if="{{followq}}" src="../../images/关注.png"></image>
+        <image bindtap='change_followq' wx:else src="../../images/蓝-关注.png"></image>
+        <text bindtap='change_followq' wx:if="{{followq}}">关注问题</text>
+        <text class='blue' bindtap='change_followq' wx:else>已关注问题</text>
+      </view>
 
-    <view class="answer-feed">
-      <block wx:for="{{answer_list}}">
-        <view  bindtap="bindItemTap" class="feed-item">
+      <view class="write flex-item">
+        <navigator url="../writeAnswer/writeAnswer?question_id={{question_id}}&user_id={{userid}}">
+          <image src="../../images/write.png"></image>
+          <text>我来回答</text>
+        </navigator>
+      </view>
+
+    </view>
+  </view>
+
+  <view class="answer-feed">
+    <block wx:for="{{answer_list}}">
+      <view bindtap="bindItemTap" class="feed-item">
         <navigator url="/pages/answers/answers?answer_id={{item.answer_id}}&question_content={{question_content}}&question_title={{question_title}}&question_id={{question_id}}">
-            <view class="feed-source">
-                <a class="" bindTap="">
-                    <view class="avatar">
-                        <!-- <image src="../../images/icon1.jpeg"></image> -->
-                        <image src="{{item.user_tx}}"></image>
-                    </view>
-                    <text>{{item.user_name}}</text>
-                </a>
-            </view>
-            <view class="feed-content">
-                <view class="answer-body">
-                    <view>
-                        <text class="answer-txt">{{item.content}}</text>
-                    </view>
-                    <view class="answer-actions">
-                        <view class="like dot">
-                            <a>{{item.support}}K 赞同 </a>
-                        </view>
-                        <view class="comments dot">
-                            <a>{{item.comment_number}} 评论 </a>
-                        </view>
-                        <view class="time">
-                            <a>{{item.time}}</a>
-                        </view>
-
-                    </view>
+          <view class="feed-source">
+            <a class="" bindTap="">
+              <view class="avatar">
+                <!-- <image src="../../images/icon1.jpeg"></image> -->
+                <image src="{{item.user_tx}}"></image>
+              </view>
+              <text>{{item.user_name}}</text>
+            </a>
+          </view>
+          <view class="feed-content">
+            <view class="answer-body">
+              <view>
+                <text class="answer-txt">{{item.content}}</text>
+              </view>
+              <view class="answer-actions">
+                <view class="like dot">
+                  <a>{{item.support}}K 赞同 </a>
                 </view>
+                <view class="comments dot">
+                  <a>{{item.comment_number}} 评论 </a>
+                </view>
+                <view class="time">
+                  <a>{{item.time}}</a>
+                </view>
+
+              </view>
             </view>
-            </navigator>
-        </view>
-      </block>
+          </view>
+        </navigator>
+      </view>
+    </block>
 
 
-        <!-- <view  bindtap="bindItemTap" class="feed-item">
+    <!-- <view  bindtap="bindItemTap" class="feed-item">
             <view class="feed-source">
                 <a class="" bindTap="">
                     <view class="avatar">
@@ -230,6 +234,5 @@
 
 
 
-    </view>
+  </view>
 </view>
-
