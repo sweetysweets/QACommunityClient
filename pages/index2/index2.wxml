@@ -69,7 +69,7 @@
 
       <!-- 下面这个block展示“我”关注用户的回答 -->
       <block wx:for="{{focusUserAnswer}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
-        <navigator url="../answers/answers?answer_id={{item.aid}}">
+        <navigator url="../answers/answers?answer_id={{item.aid}}&auid={{item.user.id}}&question_id=item.qid&question_title={{item.title}}">
           <view class="feed-item">
             <view class="feed-source">
               <a class="">
@@ -156,7 +156,7 @@
     <view class="ctnt1 " hidden="{{currentNavtab==1 ? '' : true}}">
       <!-- <text>与我相关</text> -->
       <block wx:for="{{related}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
-        <navigator url="../answers/answers?answer_id={{item.aid}}">
+        <navigator url="../answers/answers?answer_id={{item.aid}}&auid={{item.user.id}}&question_id=item.qid&question_title={{item.title}}">
           <view class="feed-item">
             <view class="feed-source">
               <a class="">

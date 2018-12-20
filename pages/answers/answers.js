@@ -1,4 +1,6 @@
 // pages/answers/answers.js
+const app = getApp();
+
 Page({
 
   /**
@@ -7,26 +9,28 @@ Page({
   data: {
     question_id:0,
     question_title:'',
-    user_id:0,
+    user_id:0,  //旺哥之前定义的，我后来都用uid表示 登录用户的id
+    auid:-1, //回答答主的用户id
     user_name:'',
     user_description:'',
     user_avatar_src:'',
     question_id:5,
     title:'',
-
-    isfollowed:false,
-    allfollowed:[],
-
+    uid:0, //登录用户的userid
+   
     answer_id:2,
 
     // answer_id:0,
 
+    followusers_list: [], //保存用户关注的用户（答主）列表
+    followusers_list_length: 0,
     answer_content:'',
     follow: true,
     good: true,
     bad: true,
-    like: true,
-    collect: true,
+    
+    // like: true,
+    // collect: true,
     comment_length:0
   },
 
@@ -35,33 +39,67 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
-  
+    var userid = app.globalData.userInfo.id;
+    console.log('Answers界面的 userid是:' + userid);
+    that.setData({
+      uid: userid //将userid写入页面data里
+    });
     console.log(options)
 
    console.log(options.answer_id)
 
     console.log('Answers界面中的answer_id：'+options.answer_id)
-
+    console.log('Answers界面中的auid：' + options.auid)
 
     that.setData({
       question_id:options.question_id,
       answer_id:options.answer_id,
       question_title:options.question_title,
-      question_id:options.question_id,
+      // question_id:options.question_id,
+      auid:options.auid
     })
-
+    console.log('22222Answers界面中的auid：' + this.data.auid);
+    console.log('22222Answers界面中的uid：' + this.data.uid);
    
-    //获取所有关注的答主
-     wx.request({
-       url: 'http://localhost:8080/',
-     })
+    //发送请求查看用户关注的用户（答主）列表,并查看回答本问题的答主是否在关注用户列表中
+    wx.request({
+      url: 'http://localhost:8080/user/getallmyfollowusers',
+      method: 'GET',
+      data: {
+        userid: this.data.user_id
+      },
+      success: function (res) {
+        console.log(res.data);
+        that.setData({
+          followusers_list: res.data,  //将查询结果赋值给question_list
+          followusers_list_length: res.data.length
+        })
+        for (var i = 0; i < that.data.followusers_list_length; i++) {
+          if (that.data.followusers_list[i].id == that.data.auid) {
+            // console.log('saaaaaaaaaaaaaaaaaaa');
+            that.setData({
+              follow: false
+            });
+            break;
+          }
+        }
+        console.log("是否关注此用户：" + that.data.follow);
+        console.log("请求查看用户关注用户列表成功！");
+      },
+      fail: function () {
+        console.log("data:" + res.data);
+        console.log("请求查看用户关注用户列表 fail");
+      },
+      complete: function () {
+        // complete
+      }
+    })
 
     
     wx.request({
       url: 'http://localhost:8080/answeruser/getansweruser',
       data:{
         answer_id:that.data.answer_id
-
       },
       method:'GET',
       success:function(res){
@@ -95,10 +133,54 @@ Page({
 
   },
   follow_change: function () {
+
     var follow = this.data.follow;
+    var that = this;
     this.setData({
       follow: !follow
     })
+
+    if (this.data.follow === false) {
+      //关注用户了,插入数据
+      console.log(that.data.user_id);
+      wx.request({
+        url: 'http://localhost:8080/user/insertmyfollowuser',
+        data: {
+          userid:that.data.uid,
+          userfollowedid:that.data.auid
+        },
+        success: function (res) {
+          console.log(res.data);
+          console.log("请求插入用户关注问题列表 成功");
+        },
+        fail: function () {
+          console.log("请求关注问题 fail");
+        },
+        complete: function () {
+          // complete
+        }
+      })
+    }
+    else {
+      //取关，删除数据
+      wx.request({
+        url: 'http://localhost:8080/user/cancelmyfollowuser',
+        data: {
+          userid: that.data.uid,
+          userfollowedid: that.data.auid
+        },
+        success: function (res) {
+          console.log(res.data);
+          console.log("请求取消关注用户 成功");
+        },
+        fail: function () {
+          console.log("请求取消关注用户 fail");
+        },
+        complete: function () {
+          // complete
+        }
+      })
+    }
   },
   good_change: function () {
     var good = this.data.good;

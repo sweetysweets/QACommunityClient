@@ -54,8 +54,8 @@
                 <view><image bindtap='bad_change' wx:if="{{bad}}" src="../../images/下灰三角形.png"></image>
                       <image bindtap='bad_change' wx:else src="../../images/下三角形.png"></image> </view>
             </view>
-            <view wx:if="{{good}}" class="good-num" >2.1k</view>
-            <view wx:else class="good-num blue">2.1k</view>
+            <view wx:if="{{good}}" class="good-num" >{{}}</view>
+            <view wx:else class="good-num blue">2.1</view>
         </view>
 
         <!-- <view class="good flex-item">
