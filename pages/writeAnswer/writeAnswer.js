@@ -58,17 +58,7 @@ Page({
               console.log(formData)
               console.log(that.data.content)
               console.log(that.data.time)
-              wx.request({
-                url: url,
-                data: JSON.stringify(formData),
-                method: 'POST',
-                header: {
-                  'Content-Type': 'application/json'
-                },
-                success: function(res) {
-                  console.log(res.data)
-                }
-              })
+            
 
 
 
