@@ -82,8 +82,8 @@
 
 
 <view class="talk" bindtap="bindComment"></view>
-<view class="release">
-  <textarea name='textarea' class="text" placeholder-class="input_null" bindblur="textareablur" bindinput="textareaInput" fixed="true" maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" focus="{{releaseFocus}}" placeholder="评论点什么吧 {{}}"
+<view class="release" hidden="{{!releaseFocus_comment}}">
+  <textarea name='textarea' class="text" placeholder-class="input_null" bindblur="textareablur" bindinput="textareaInput" fixed="true" maxlength="-1" show-confirm-bar="false" cursor-spacing="15" auto-height="true" focus="{{releaseFocus_comment}}" placeholder="评论点什么吧 {{}}"
     value='{{reply_content}}'></textarea>
   <view class="submit" bindtap='sendComment'>评论</view>
 </view>

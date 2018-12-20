@@ -39,7 +39,9 @@ Page({
     }else{
       //var mytime =util.formatTime(new Date);
 
+
        var uid = app.globalData.userInfo.id;
+
       console.log("title:" + this.data.mytitle);
       console.log("content:"+this.data.mycontent);
       //console.log("time:"+mytime)
@@ -74,8 +76,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     var that = this;
     // that.data.user_id= app.globalData.userinfo.uid;
+
     console.log(app.globalData.userInfo.id);
   },
 

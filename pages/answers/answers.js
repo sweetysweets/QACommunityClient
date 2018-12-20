@@ -5,6 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    question_id:0,
+    question_title:'',
+    user_id:0,
+    user_name:'',
+    user_description:'',
+    user_avatar_src:'',
     question_id:5,
     title:'',
 
@@ -31,22 +37,31 @@ Page({
     var that = this;
   
     console.log(options)
+
+   console.log(options.answer_id)
+
     console.log('Answers界面中的answer_id：'+options.answer_id)
 
+
     that.setData({
-      //question_id:options.question_id
-      answer_id:options.id
-    })
-   
-    //获取所有关注的对象
-    wx.request({
-      url: 'http://localhost:8080/',
+      question_id:options.question_id,
+      answer_id:options.answer_id,
+      question_title:options.question_title,
+      question_id:options.question_id,
     })
 
+   
+    //获取所有关注的答主
+     wx.request({
+       url: 'http://localhost:8080/',
+     })
+
+    
     wx.request({
-      url: 'http://localhost:8080/answer/queryAnswer',
+      url: 'http://localhost:8080/answeruser/getansweruser',
       data:{
-        answer_id:this.data.answer_id
+        answer_id:that.data.answer_id
+
       },
       method:'GET',
       success:function(res){
@@ -54,10 +69,15 @@ Page({
         console.log(res.data)
         
         that.setData({
-          answer_content:answer.content
+          answer_content:answer.content,
+          user_id:answer.user_id,
+          user_avatar_src:answer.avater,
+          user_name:answer.user_name,
+          user_description:answer.description
         })
       }
     })
+ 
     this.getCommentCount();
   },
 

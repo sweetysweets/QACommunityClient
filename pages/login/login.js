@@ -27,6 +27,7 @@ Page({
         }
       }
     })
+    
   },
   bindGetUserInfo: function (e) {
     if (e.detail.userInfo) {
