@@ -13,8 +13,8 @@ Page({
     user_avatar_src:'',
     question_id:5,
     title:'',
-
-
+    support:0,
+    against:0,
     answer_id:2,
 
     // answer_id:0,
@@ -64,7 +64,9 @@ Page({
           user_id:answer.user_id,
           user_avatar_src:answer.avater,
           user_name:answer.user_name,
-          user_description:answer.description
+          user_description:answer.description,
+          support:answer.support,
+          against:answer.against
         })
       }
     })
@@ -92,26 +94,145 @@ Page({
     })
   },
   good_change: function () {
+    var that = this;
     var good = this.data.good;
     this.setData({
       good: !good,
     })
+    var tem_support = this.data.support;
+    var tem_against = this.data.against;
+    
     var good = this.data.good;
+    //第一次
+    if (good == true){
+      //support -1
+      tem_support = tem_support - 1;
+
+      wx.request({
+        url: 'http://localhost:8080/answer/updateSupport',
+        data:{
+          support:tem_support,
+          answer_id:this.data.answer_id
+        },
+        method:"GET",
+        success:function(res){
+          console.log("更新了support！-1");
+        }
+      })
+      that.setData({
+        support:tem_support
+      })
+      
+    }
+    else{
+      //support +1
+      tem_support = tem_support + 1;
+
+      wx.request({
+        url: 'http://localhost:8080/answer/updateSupport',
+        data: {
+          support: tem_support,
+          answer_id: this.data.answer_id
+        },
+        method: "GET",
+        success: function (res) {
+          console.log("更新了support！+1");
+        }
+      })
+      that.setData({
+        support: tem_support
+      })
+    }
     var bad = this.data.bad;
     if (good == false && bad == false) {
+      //点赞against -1
+      tem_against = tem_against -1;
+      wx.request({
+        url: 'http://localhost:8080/answer/updateAgainst',
+        data: {
+          against: tem_against,
+          answer_id: this.data.answer_id
+        },
+        method: 'GET',
+        success: function (res) {
+          console.log("更新了against！-1");
+          console.log(tem_against)
+        }
+      })
+      that.setData({
+        against: tem_against
+      })
       this.setData({
         bad: !bad
       })
+      
     }
   },
   bad_change: function () {
+    var that = this;
+    var tem_support = this.data.support
+    var tem_against = this.data.against
     var bad = this.data.bad;
     this.setData({
       bad: !bad,
     })
     var good = this.data.good;
     var bad = this.data.bad;
+    if(bad == true){
+      tem_against = tem_against - 1;
+      //against -1
+      wx.request({
+        url: 'http://localhost:8080/answer/updateAgainst',
+        data: {
+          against: tem_against,
+          answer_id: this.data.answer_id
+        },
+        method: 'GET',
+        success: function (res) {
+          console.log("更新了against！-1");
+          console.log(tem_against)
+        }
+      })
+      that.setData({
+        against: tem_against
+      })
+    }
+    else{
+      //against +1
+      tem_against = tem_against + 1
+      wx.request({
+        url: 'http://localhost:8080/answer/updateAgainst',
+        data: {
+          against: tem_against,
+          answer_id: this.data.answer_id
+        },
+        method: 'GET',
+        success: function (res) {
+          console.log("更新了against！+1");
+          console.log(tem_against)
+        }
+      })
+      that.setData({
+        against: tem_against
+      })
+    }
     if (good == false && bad == false) {
+        //support -1
+        tem_support = tem_support - 1
+      wx.request({
+        url: 'http://localhost:8080/answer/updateSupport',
+        data: {
+          support: tem_support,
+          answer_id: this.data.answer_id
+        },
+        method: 'GET',
+        success: function (res) {
+          console.log("更新了support！-1");
+        }
+      })
+      that.setData({
+        support: tem_support
+      })
       this.setData({
         good: !good
       })

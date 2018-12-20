@@ -19,11 +19,12 @@ Page({
 
   },
   bindButtonTap:function(e){
-    var time = util.formatTime(new Date());
+  //  var time = util.formatTime();
+ //   console.log(time)
     this.setData({
       focus:true,
       content:e.detail.value,
-      time: time
+      time: this.data.time
     })
   },
   submmitAnswer: function(e){
@@ -37,7 +38,7 @@ Page({
     formData.content = that.data.content
     var url = that.data.url
        console.log(formData)
-      console.log(that.data.content)
+      console.log("======",that.data.content)
       console.log(that.data.time)
       wx.request({
         url: url,
