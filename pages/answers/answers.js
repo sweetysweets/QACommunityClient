@@ -5,14 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-<<<<<<< HEAD
     question_id:0,
     question_title:'',
     user_id:0,
     user_name:'',
     user_description:'',
     user_avatar_src:'',
-=======
     question_id:5,
     title:'',
 
@@ -21,7 +19,6 @@ Page({
 
     // answer_id:0,
 
->>>>>>> 4f92f350bfa72e300cb86eac1d4614e71040c2fe
     answer_content:'',
     follow: true,
     good: true,
@@ -38,17 +35,17 @@ Page({
     var that = this;
   
     console.log(options)
-<<<<<<< HEAD
+
    console.log(options.answer_id)
-=======
+
     console.log('Answers界面中的answer_id：'+options.answer_id)
->>>>>>> 4f92f350bfa72e300cb86eac1d4614e71040c2fe
+
 
     that.setData({
       question_id:options.question_id,
       answer_id:options.answer_id,
       question_title:options.question_title,
-      question_id:options.question_id
+      question_id:options.question_id,
     })
 
     wx.request({

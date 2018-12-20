@@ -10,8 +10,8 @@
                 <image src="{{user_avatar_src}}"></image>
             </view>
             <view class="answerer-info flex-item">
-                <text class="answerer-name">user_name</text>
-                <text class="answerer-des">user_description</text>
+                <text class="answerer-name">{{user_name}}</text>
+                <text class="answerer-des">{{user_description}}</text>
             </view>
          <view class="follow flex-item">
                 <text bindtap='follow_change' wx:if="{{follow}}">十  关注</text>

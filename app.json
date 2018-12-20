@@ -1,9 +1,5 @@
 {
   "pages": [
-<<<<<<< HEAD
-=======
-     
->>>>>>> 4f92f350bfa72e300cb86eac1d4614e71040c2fe
     "pages/login/login",
     "pages/index/index",
     "pages/index2/index2",
