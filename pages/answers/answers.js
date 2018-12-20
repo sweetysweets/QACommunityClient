@@ -5,18 +5,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    question_id:5,
-    title:'',
-
-<<<<<<< HEAD
-    answer_id:1,
-=======
-
-    answer_id:2,
-
-    // answer_id:0,
-
->>>>>>> c2006aa7f30b5d879d76eb6b34ffa8527a719438
+    question_id:0,
+    question_title:'',
+    user_id:0,
+    user_name:'',
+    user_description:'',
+    user_avatar_src:'',
     answer_content:'',
     follow: true,
     good: true,
@@ -33,17 +27,20 @@ Page({
     var that = this;
   
     console.log(options)
-   console.log(options.id)
+   console.log(options.answer_id)
 
     that.setData({
-      //question_id:options.question_id
-      answer_id:options.id
+      question_id:options.question_id,
+      answer_id:options.answer_id,
+      question_title:options.question_title,
+      question_id:options.question_id
     })
-   
+
     wx.request({
-      url: 'http://localhost:8080/answer/queryAnswer',
+      url: 'http://localhost:8080/answeruser/getansweruser',
       data:{
-        answer_id:this.data.answer_id
+        answer_id:that.data.answer_id
+
       },
       method:'GET',
       success:function(res){
@@ -51,10 +48,15 @@ Page({
         console.log(res.data)
         
         that.setData({
-          answer_content:answer.content
+          answer_content:answer.content,
+          user_id:answer.user_id,
+          user_avatar_src:answer.avater,
+          user_name:answer.user_name,
+          user_description:answer.description
         })
       }
     })
+ 
     this.getCommentCount();
   },
 

@@ -4,7 +4,10 @@
 
 Page({
   data: {
-    question_id:15,
+    question_id:30,
+    question_content:'',
+    question_title:'',
+
     answer_list:[],
     followq:true
   },
@@ -22,16 +25,24 @@ Page({
     })
   },
   onLoad: function (options) {
+
     console.log('question界面：question_id:'+options.question_id)
-    console.log('question界面：question_title:' + options.question_title)
-    console.log('question界面：question_content:' + options.question_content)
-    console.log('question界面：user_id:' + options.user_id)
+    // console.log('question界面：question_title:' + options.question_title)
+    // console.log('question界面：question_content:' + options.question_content)
+    // console.log('question界面：user_id:' + options.user_id)
     console.log('onLoad')
     var that = this
+    that.setData({
+      //question_id:options.question_id,
+      question_title:options.question_title,
+      question_content:options.question_content
+    })
     wx.request({
-      url: 'http://localhost:8080/answer/getAnswers',
+     // url: 'http://localhost:8080/answer/getAnswers',
+      url: 'http://localhost:8080/answer/queryAnswers',
       method:'GET',
       data:{
+        question_id:that.data.question_id
       },
       success:function(res){
         var answer_list = res.data
