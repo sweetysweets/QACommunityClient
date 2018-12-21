@@ -91,13 +91,15 @@ Page({
 
     wx.request({
       // url: 'http://localhost:8080/answer/getAnswers',
-      url: 'http://localhost:8080/answer/queryAnswers',
+      //url: 'http://localhost:8080/answer/queryAnswers',
+      url:'http://localhost:8080/answeruser/getanswerusers',
       method: 'GET',
       data: {
         question_id: that.data.question_id
       },
       success: function(res) {
         var answer_list = res.data
+        console.log("=====================")
         console.log(answer_list)
         that.setData({
           answer_list: answer_list

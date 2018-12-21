@@ -57,7 +57,7 @@
             <a class="" bindTap="">
               <view class="avatar">
                 <!-- <image src="../../images/icon1.jpeg"></image> -->
-                <image src="{{item.user_tx}}"></image>
+                <image src="{{item.avater}}"></image>
               </view>
               <text>{{item.user_name}}</text>
             </a>
