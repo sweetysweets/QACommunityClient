@@ -67,7 +67,7 @@ Page({
       url: 'http://localhost:8080/user/getallmyfollowusers',
       method: 'GET',
       data: {
-        userid: this.data.user_id
+        userid: this.data.uid
       },
       success: function (res) {
         console.log(res.data);
@@ -146,6 +146,7 @@ Page({
     if (this.data.follow === false) {
       //关注用户了,插入数据
       console.log(that.data.user_id);
+      console.log('auid='+that.data.auid)
       wx.request({
         url: 'http://localhost:8080/user/insertmyfollowuser',
         data: {
@@ -154,10 +155,10 @@ Page({
         },
         success: function (res) {
           console.log(res.data);
-          console.log("请求插入用户关注问题列表 成功");
+          console.log("请求插入用户关注用户列表 成功");
         },
         fail: function () {
-          console.log("请求关注问题 fail");
+          console.log("请求关注用户 fail");
         },
         complete: function () {
           // complete

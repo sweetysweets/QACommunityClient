@@ -52,7 +52,7 @@
   <view class="answer-feed">
     <block wx:for="{{answer_list}}">
       <view bindtap="bindItemTap" class="feed-item">
-        <navigator url="/pages/answers/answers?answer_id={{item.answer_id}}&question_content={{question_content}}&question_title={{question_title}}&question_id={{question_id}}">
+        <navigator url="/pages/answers/answers?answer_id={{item.answer_id}}&question_content={{question_content}}&question_title={{question_title}}&question_id={{question_id}}&auid={{item.user_id}}">
           <view class="feed-source">
             <a class="" bindTap="">
               <view class="avatar">
