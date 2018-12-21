@@ -180,10 +180,16 @@
 .problem-item .problem-content {
     flex: 6;
     text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .problem-item .problem-content text {
     display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .problem-item .problem-content .guding {
@@ -201,15 +207,12 @@
 
 .p-content {
     color: #AFAFAF;
-    font-size: 25rpx;
+    font-size: 20rpx;
     line-height: 20rpx;
     margin-top: 15rpx;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .placehold {
     padding: 80rpx 0;
-    font-size: 28rpx
+    font-size: 28rpx;
 }
