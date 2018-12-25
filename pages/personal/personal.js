@@ -58,7 +58,7 @@ Page({
         }
       })    
       wx.request({
-        url: 'http://localhost:8080/user/focus_problems',
+        url: getApp().globalData.urlPath + 'user/focus_problems',
         method: 'GET',
         data: {
           userid: that.data.myInfo.id

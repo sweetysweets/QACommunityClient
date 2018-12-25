@@ -47,7 +47,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    urlPath: "http://localhost:8080/",
+    urlPath: "http://129.28.81.82:8080/",
     openid:null,
   }
 })

@@ -54,7 +54,7 @@ Page({
 
     //发送请求查看用户关注的问题列表,并查看本问题的qid是否在关注问题中
     wx.request({
-      url: 'http://localhost:8080/getallmyfollowquestions',
+      url: getApp().globalData.urlPath + 'getallmyfollowquestions',
       method: 'GET',
       data: {
         userid: this.data.userid
@@ -92,7 +92,7 @@ Page({
     wx.request({
       // url: 'http://localhost:8080/answer/getAnswers',
       //url: 'http://localhost:8080/answer/queryAnswers',
-      url:'http://localhost:8080/answeruser/getanswerusers',
+      url: getApp().globalData.urlPath + 'answeruser/getanswerusers',
       method: 'GET',
       data: {
         question_id: that.data.question_id
@@ -119,7 +119,7 @@ Page({
     if (this.data.followq === false) {
       //关注了,插入数据
       wx.request({
-        url: 'http://localhost:8080/followquestion',
+        url: getApp().globalData.urlPath + 'followquestion',
         data: {
           userid: this.data.userid,
           questionid: this.data.question_id
@@ -138,7 +138,7 @@ Page({
     } else {
       //取关，删除数据
       wx.request({
-        url: 'http://localhost:8080/cancelfollowquestion',
+        url: getApp().globalData.urlPath + 'cancelfollowquestion',
         data: {
           userid: this.data.userid,
           questionid: this.data.question_id

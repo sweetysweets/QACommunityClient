@@ -64,7 +64,7 @@ Page({
    
     //发送请求查看用户关注的用户（答主）列表,并查看回答本问题的答主是否在关注用户列表中
     wx.request({
-      url: 'http://localhost:8080/user/getallmyfollowusers',
+      url: getApp().globalData.urlPath + 'user/getallmyfollowusers',
       method: 'GET',
       data: {
         userid: this.data.uid
@@ -98,7 +98,7 @@ Page({
 
     
     wx.request({
-      url: 'http://localhost:8080/answeruser/getansweruser',
+      url: getApp().globalData.urlPath + 'answeruser/getansweruser',
       data:{
         answer_id:that.data.answer_id
       },
@@ -148,7 +148,7 @@ Page({
       console.log(that.data.user_id);
       console.log('auid='+that.data.auid)
       wx.request({
-        url: 'http://localhost:8080/user/insertmyfollowuser',
+        url: getApp().globalData.urlPath + 'user/insertmyfollowuser',
         data: {
           userid:that.data.uid,
           userfollowedid:that.data.auid
@@ -168,7 +168,7 @@ Page({
     else {
       //取关，删除数据
       wx.request({
-        url: 'http://localhost:8080/user/cancelmyfollowuser',
+        url: getApp().globalData.urlPath + 'user/cancelmyfollowuser',
         data: {
           userid: that.data.uid,
           userfollowedid: that.data.auid
@@ -202,7 +202,7 @@ Page({
       tem_support = tem_support - 1;
 
       wx.request({
-        url: 'http://localhost:8080/answer/updateSupport',
+        url: getApp().globalData.urlPath +'answer/updateSupport',
         data:{
           support:tem_support,
           answer_id:this.data.answer_id
@@ -222,7 +222,7 @@ Page({
       tem_support = tem_support + 1;
 
       wx.request({
-        url: 'http://localhost:8080/answer/updateSupport',
+        url: getApp().globalData.urlPath + 'answer/updateSupport',
         data: {
           support: tem_support,
           answer_id: this.data.answer_id
@@ -241,7 +241,7 @@ Page({
       //点赞against -1
       tem_against = tem_against -1;
       wx.request({
-        url: 'http://localhost:8080/answer/updateAgainst',
+        url: getApp().globalData.urlPath + 'answer/updateAgainst',
         data: {
           against: tem_against,
           answer_id: this.data.answer_id
@@ -275,7 +275,7 @@ Page({
       tem_against = tem_against - 1;
       //against -1
       wx.request({
-        url: 'http://localhost:8080/answer/updateAgainst',
+        url: getApp().globalData.urlPath + 'answer/updateAgainst',
         data: {
           against: tem_against,
           answer_id: this.data.answer_id
@@ -294,7 +294,7 @@ Page({
       //against +1
       tem_against = tem_against + 1
       wx.request({
-        url: 'http://localhost:8080/answer/updateAgainst',
+        url: getApp().globalData.urlPath + 'answer/updateAgainst',
         data: {
           against: tem_against,
           answer_id: this.data.answer_id
@@ -313,7 +313,7 @@ Page({
         //support -1
         tem_support = tem_support - 1
       wx.request({
-        url: 'http://localhost:8080/answer/updateSupport',
+        url: getApp().globalData.urlPath + 'answer/updateSupport',
         data: {
           support: tem_support,
           answer_id: this.data.answer_id
@@ -386,7 +386,7 @@ Page({
   getCommentCount:function(){
     var that = this
     wx.request({
-      url: "http://localhost:8080/comment/getCommentCount",
+      url: getApp().globalData.urlPath + "comment/getCommentCount",
       data: {
         answer_id: this.data.answer_id
       },
