@@ -41,7 +41,7 @@ Page({
   onShow: function (event) {
     var that = this;
     wx.request({
-      url: 'http://localhost:8080/user/usersinfo',
+      url: getApp().globalData.urlPath + 'user/usersinfo',
       method: 'GET',
       data: { userid: that.data.usid },
       success: function (res) {
@@ -63,7 +63,7 @@ Page({
       }
     });
     wx.request({
-      url: 'http://localhost:8080/user/focus_users',
+      url: getApp().globalData.urlPath + 'user/focus_users',
       method: 'GET',
       data: { userid: that.data.usid },
       success: function (res) {
@@ -85,7 +85,7 @@ Page({
       }
     });
     wx.request({
-      url: 'http://localhost:8080/user/focus_problems',
+      url: getApp().globalData.urlPath + 'user/focus_problems',
       method: 'GET',
       data: {
         userid: that.data.usid
