@@ -35,7 +35,7 @@ Page({
   onShow: function (event) {
     var that = this;
       wx.request({
-        url: 'http://localhost:8080/user/focus_users',
+        url: getApp().globalData.urlPath+'user/focus_users',
         method: 'GET',
         data: {
           userid: that.data.myInfo.id
